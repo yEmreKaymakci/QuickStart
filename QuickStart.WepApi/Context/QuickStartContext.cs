@@ -3,7 +3,7 @@ using QuickStart.WepApi.Entity;
 
 namespace QuickStart.WepApi.Context
 {
-    public class QuickStartContext:DbContext
+    public class QuickStartContext : DbContext
     {
         //sql bağlantı adresimiz tutar.
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -13,7 +13,7 @@ namespace QuickStart.WepApi.Context
 
         public DbSet<Service> Services { get; set; }
 
-        public DbSet<Testimonial> Testimonials { get; set;}
+        public DbSet<Testimonial> Testimonials { get; set; }
 
         public DbSet<Notification> Notifications { get; set; }
 
