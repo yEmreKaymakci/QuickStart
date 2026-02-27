@@ -21,7 +21,14 @@ namespace QuickStart.WepApi.Controllers
 
         public IActionResult TestimonialList()
         {
-            var value=_context.Testimonials.ToList();
+            var value = _context.Testimonials.ToList();
+            return Ok(value);
+        }
+        [HttpGet("TestimonialCount")]
+
+        public IActionResult TestimonialCount()
+        {
+            var value = _context.Testimonials.Count();
             return Ok(value);
         }
 

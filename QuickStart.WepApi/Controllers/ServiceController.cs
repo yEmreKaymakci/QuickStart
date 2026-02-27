@@ -22,6 +22,13 @@ namespace QuickStart.WepApi.Controllers
             var value=_context.Services.ToList();
             return Ok(value);
         }
+        [HttpGet("ServiceCount")]
+
+        public IActionResult ServiceCount()
+        {
+            var value = _context.Services.Count();
+            return Ok(value);
+        }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
