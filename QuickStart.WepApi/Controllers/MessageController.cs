@@ -15,7 +15,6 @@ namespace QuickStart.WepApi.Controllers
         {
             _context = context;
         }
-
         [HttpGet]
 
         public IActionResult MessageList()
@@ -30,7 +29,6 @@ namespace QuickStart.WepApi.Controllers
             var value = _context.Messages.Count();
             return Ok(value);
         }
-
         [HttpGet("{id}")]
 
         public IActionResult GetById(int id)
@@ -44,7 +42,7 @@ namespace QuickStart.WepApi.Controllers
         {
             _context.Messages.Add(message);
             _context.SaveChanges();
-            return Ok("ekleme işlemi başarı ile gerçekleşti");
+            return Ok("Ekleme işlemi başarı ile gerçekleşti");
         }
         [HttpPut]
 
