@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using QuickStart.WebUI.Dtos.FAQs;
 
 namespace QuickStart.WebUI.ViewComponents
 {
@@ -14,8 +16,14 @@ namespace QuickStart.WebUI.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("")
-            return View();
+            var response = await client.GetAsync("https://localhost:7051/api/FAQ");
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonData = await response.Content.ReadAsStringAsync();
+                var value = JsonConvert.DeserializeObject<List<ResultFAQsDto>>(jsonData);
+                return View(value);
+            }
+            return View(new List<ResultFAQsDto>());
         }
     }
 }
