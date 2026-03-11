@@ -1,12 +1,12 @@
 ﻿@using QuickStart.WebUI.Dtos.Contacts
 @model ResultContactsDto
+
 <section id="contact" class="contact section">
 
-	<!-- Section Title -->
 	<div class="container section-title" data-aos="fade-up">
 		<h2>İletişim</h2>
 		<p>Bizlere aşağıdaki bilgilerden ulaşabilirsiniz:</p>
-	</div><!-- End Section Title -->
+	</div>
 
 	<div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -18,7 +18,7 @@
 					<h3>Adresimiz</h3>
 					<p>@Model.Address</p>
 				</div>
-			</div><!-- End Info Item -->
+			</div>
 
 			<div class="col-lg-3 col-md-6">
 				<div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
@@ -26,7 +26,7 @@
 					<h3>Telefon Numaramız</h3>
 					<p>@Model.PhoneNumber</p>
 				</div>
-			</div><!-- End Info Item -->
+			</div>
 
 			<div class="col-lg-3 col-md-6">
 				<div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
@@ -34,14 +34,14 @@
 					<h3>E-posta Adresimiz</h3>
 					<p>@Model.Email</p>
 				</div>
-			</div><!-- End Info Item -->
+			</div>
 
 		</div>
 
 		<div class="row gy-4 mt-1">
 			<div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
 				@Html.Raw(Model.MapUrl)
-			</div><!-- End Google Maps -->
+			</div>
 
 			<div class="col-lg-6">
 				<form asp-controller="Message" asp-action="SendMessage" method="post" class="mt-4" data-aos="fade-up" data-aos-delay="400">
@@ -82,7 +82,7 @@
 
 					</div>
 				</form>
-			</div><!-- End Contact Form -->
+			</div>
 
 		</div>
 
