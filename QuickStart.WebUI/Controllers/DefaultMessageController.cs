@@ -5,11 +5,11 @@ using QuickStart.WebUI.Dtos.Messages;
 
 namespace QuickStart.WebUI.Controllers
 {
-    public class MessageController : Controller
+    public class DefaultMessageController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public MessageController(IHttpClientFactory httpClientFactory)
+        public DefaultMessageController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }

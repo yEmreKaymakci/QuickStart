@@ -1,5 +1,7 @@
-﻿@using QuickStart.WebUI.Dtos.Abouts
+﻿
+@using QuickStart.WebUI.Dtos.Abouts
 @model List<ResultAboutsDto>
+
 @{
 	ViewData["Title"] = "Index";
 	Layout = "~/Views/_AdminLayout/Index.cshtml";
@@ -12,7 +14,7 @@
 			<h2 class="text-xl font-bold text-white">Hakkımızda Yönetimi</h2>
 			<p class="text-sm text-gray-400 mt-1">Platformdaki hakkımızda yazılarını ve resimlerini buradan düzenleyebilirsiniz.</p>
 		</div>
-		<a href="/About/CreateAbout" class="inline-flex items-center gap-2 bg-accent-blue hover:bg-blue-600 text-white px-4 py-2 rounded-custom transition-all-custom text-sm font-medium shadow-lg shadow-blue-500/30">
+		<a href="/AdminAbout/CreateAbout" class="inline-flex items-center gap-2 bg-accent-blue hover:bg-blue-600 text-white px-4 py-2 rounded-custom transition-all-custom text-sm font-medium shadow-lg shadow-blue-500/30">
 			<i class="mdi mdi-plus"></i> Yeni Giriş Ekle
 		</a>
 	</div>
@@ -36,7 +38,7 @@
 					<tr class="hover:bg-white/5 transition-all-custom">
 						<td class="px-6 py-4 text-sm text-gray-400">@item.Id</td>
 						<td class="px-6 py-4 text-sm font-medium text-white">@item.Title</td>
-							
+
 						<td class="px-6 py-4 text-sm text-gray-400">
 							<div class="max-w-[150px] truncate cursor-pointer hover:text-accent-blue transition-colors show-full-text-btn"
 								 data-title="Açıklama Detayı"
@@ -70,10 +72,10 @@
 						</td>
 
 						<td class="px-6 py-4 text-right space-x-2">
-							<a href="/About/UpdateAbout/@item.Id" class="inline-flex items-center justify-center bg-green-500/10 text-green-500 hover:bg-green-500/20 px-3 py-1.5 rounded-md text-xs font-bold transition-all-custom">
+							<a href="/AdminAbout/UpdateAbout/@item.Id" class="inline-flex items-center justify-center bg-green-500/10 text-green-500 hover:bg-green-500/20 px-3 py-1.5 rounded-md text-xs font-bold transition-all-custom">
 								<i class="mdi mdi-pencil mr-1"></i> Güncelle
 							</a>
-							<a href="/About/DeleteAbout/@item.Id" class="inline-flex items-center justify-center bg-red-500/10 text-red-400 hover:bg-red-500/20 px-3 py-1.5 rounded-md text-xs font-bold transition-all-custom">
+							<a href="/AdminAbout/DeleteAbout/@item.Id" class="inline-flex items-center justify-center bg-red-500/10 text-red-400 hover:bg-red-500/20 px-3 py-1.5 rounded-md text-xs font-bold transition-all-custom">
 								<i class="mdi mdi-delete mr-1"></i> Sil
 							</a>
 						</td>

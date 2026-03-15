@@ -1,4 +1,5 @@
-﻿@model List<QuickStart.WebUI.Dtos.Services.ResultServicesDto>
+﻿
+@model List<QuickStart.WebUI.Dtos.Services.ResultServicesDto>
 
 @{
 	ViewData["Title"] = "Index";
@@ -32,15 +33,15 @@
 								<td>@item.Title</td>
 								<td>@item.Description</td>
 								<td>@item.IconUrl</td>
-								<td><a href="/Service/DeleteService/@item.Id" class="btn btn-danger">Sil</a></td>
-								<td><a href="/Service/UpdateService/@item.Id" class="btn btn-success">Güncelle</a></td>
+								<td><a href="/AdminService/DeleteService/@item.Id" class="btn btn-danger">Sil</a></td>
+								<td><a href="/AdminService/UpdateService/@item.Id" class="btn btn-success">Güncelle</a></td>
 							</tr>
 						}
 
 
 					</tbody>
 				</table>
-				<a href="/Service/CreateService" class="btn btn-info">Yeni Hizmet Girişi</a>
+				<a href="/AdminService/CreateService" class="btn btn-info">Yeni Hizmet Girişi</a>
 			</div>
 		</div>
 	</div>

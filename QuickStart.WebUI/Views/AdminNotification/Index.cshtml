@@ -1,4 +1,5 @@
-﻿@model List<QuickStart.WebUI.Dtos.Notification.ResultNotificationWithNotificationTypeDto>
+﻿
+@model List<QuickStart.WebUI.Dtos.Notification.ResultNotificationWithNotificationTypeDto>
 @{
 	ViewData["Title"] = "Index";
 	Layout = "~/Views/_AdminLayout/Index.cshtml";
@@ -36,15 +37,15 @@
 								<td>@item.Content</td>
 								<td>@item.NotificationTypeName</td>
 								<td>@(item.IsRead ? "Okundu" : "Okunmadı")</td>
-								<td><a href="/Notification/DeleteNotification/@item.NotificationId" class="btn btn-danger">Sil</a></td>
-								<td><a href="/Notification/UpdateNotification/@item.NotificationId" class="btn btn-success">Güncelle</a></td>
+								<td><a href="/AdminNotification/DeleteNotification/@item.NotificationId" class="btn btn-danger">Sil</a></td>
+								<td><a href="/AdminNotification/UpdateNotification/@item.NotificationId" class="btn btn-success">Güncelle</a></td>
 							</tr>
 						}
 
 
 					</tbody>
 				</table>
-				<a href="/Notification/CreateNotification" class="btn btn-info">Yeni Bildirim Ekleme Sayfası</a>
+				<a href="/AdminNotification/CreateNotification" class="btn btn-info">Yeni Bildirim Ekleme Sayfası</a>
 			</div>
 		</div>
 	</div>

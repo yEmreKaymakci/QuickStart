@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace QuickStart.WebUI.Controllers
 {
-    public class DashboardController : Controller
+    public class AdminDashboardController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public DashboardController(IHttpClientFactory httpClientFactory)
+        public AdminDashboardController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }

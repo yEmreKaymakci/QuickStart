@@ -5,7 +5,7 @@ using System.Text;
 
 namespace QuickStart.WebUI.Controllers
 {
-    public class ServiceController : Controller
+    public class AdminServiceController : Controller
     {
         //Api - FARKLI PROGRAMLARIN BİRBİRİYLE KONUŞMASINI SAĞLAR
         //HTTP - İnternetteki cihazların birbiriyle konuşmasını sağlayan bir protokol
@@ -14,7 +14,7 @@ namespace QuickStart.WebUI.Controllers
 
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public ServiceController(IHttpClientFactory httpClientFactory)
+        public AdminServiceController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
