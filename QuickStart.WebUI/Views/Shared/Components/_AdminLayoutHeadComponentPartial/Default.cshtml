@@ -1,14 +1,61 @@
-﻿
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Breeze Admin</title>
-    <link rel="stylesheet" href="~/Breeze-Free-Bootstrap-Admin-Template-1.0.0/template/assets/vendors/mdi/css/materialdesignicons.min.css" />
-    <link rel="stylesheet" href="~/Breeze-Free-Bootstrap-Admin-Template-1.0.0/template/assets/vendors/flag-icon-css/css/flag-icon.min.css" />
-    <link rel="stylesheet" href="~/Breeze-Free-Bootstrap-Admin-Template-1.0.0/template/assets/vendors/css/vendor.bundle.base.css" />
-    <link rel="stylesheet" href="~/Breeze-Free-Bootstrap-Admin-Template-1.0.0/template/assets/vendors/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="~/Breeze-Free-Bootstrap-Admin-Template-1.0.0/template/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" />
-    <link rel="stylesheet" href="~/Breeze-Free-Bootstrap-Admin-Template-1.0.0/template/assets/css/style.css" />
-    <link rel="shortcut icon" href="~/Breeze-Free-Bootstrap-Admin-Template-1.0.0/template/assets/images/favicon.png" />
+﻿<head>
+	<meta charset="utf-8" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<title>Breeze Admin</title>
+
+	<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css" rel="stylesheet" />
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					colors: {
+						'dark-bg-deep': '#121212',
+						'dark-bg-card': '#1e1e1e',
+						'accent-blue': '#3b82f6',
+						'accent-purple': '#a855f7',
+					},
+					borderRadius: {
+						'custom': '12px',
+					}
+				}
+			}
+		}
+	</script>
+	<style data-purpose="custom-layout-styles">
+		:root {
+			--bg-deep: #121212;
+			--bg-card: #1e1e1e;
+			--accent-blue: #3b82f6;
+			--accent-purple: #a855f7;
+		}
+
+		body {
+			background-color: var(--bg-deep);
+			color: #e5e7eb;
+			font-family: 'Inter', sans-serif;
+		}
+		/* Custom Scrollbar for Dark Theme */
+		::-webkit-scrollbar {
+			width: 6px;
+		}
+
+		::-webkit-scrollbar-track {
+			background: var(--bg-deep);
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: #333;
+			border-radius: 10px;
+		}
+
+			::-webkit-scrollbar-thumb:hover {
+				background: var(--accent-blue);
+			}
+		/* Smooth transitions */
+		.transition-all-custom {
+			transition: all 0.3s ease;
+		}
+	</style>
 </head>

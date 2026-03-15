@@ -3,280 +3,175 @@
 	Layout = "~/Views/_AdminLayout/Index.cshtml";
 }
 
-
-<div class="content-wrapper pb-0">
-	<div class="page-header flex-wrap">
-		<h3 class="mb-0">
-			İstatistik sayfasına hoşgeldiniz <span class="pl-0 h6 pl-sm-2 text-muted d-inline-block">Your web analytics dashboard template.</span>
-		</h3>
-
-	</div>
-	<div class="row">
-		<div class="col-xl-3 col-lg-12 stretch-card grid-margin">
-			<div class="row">
-				<div class="col-xl-12 col-md-6 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
-					<div class="card bg-warning">
-						<div class="card-body px-3 py-4">
-							<div class="d-flex justify-content-between align-items-start">
-								<div class="color-card">
-									<p class="mb-0 color-card-head">Müşteriler</p>
-									<h2 class="text-white">
-										@ViewBag.TestimonialCount<span class="h5"></span>
-									</h2>
-								</div>
-								<i class="card-icon-indicator mdi mdi-plus-circle bg-inverse-icon-warning"></i>
-							</div>
-							<h6 class="text-white">Müşteri Sayısı</h6>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-12 col-md-6 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
-					<div class="card bg-danger">
-						<div class="card-body px-3 py-4">
-							<div class="d-flex justify-content-between align-items-start">
-								<div class="color-card">
-									<p class="mb-0 color-card-head">Hizmetler</p>
-									<h2 class="text-white">
-										@ViewBag.ServiceCount<span class="h5"></span>
-									</h2>
-								</div>
-								<i class="card-icon-indicator mdi mdi-cube-outline bg-inverse-icon-danger"></i>
-							</div>
-							<h6 class="text-white">Hizmetlerin Sayısı</h6>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-12 col-md-6 stretch-card grid-margin grid-margin-sm-0 pb-sm-3 pb-lg-0 pb-xl-3">
-					<div class="card bg-primary">
-						<div class="card-body px-3 py-4">
-							<div class="d-flex justify-content-between align-items-start">
-								<div class="color-card">
-									<p class="mb-0 color-card-head">Orders</p>
-									<h2 class="text-white">
-										$1,753.<span class="h5">00</span>
-									</h2>
-								</div>
-								<i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-primary"></i>
-							</div>
-							<h6 class="text-white">67.98% Since last month</h6>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-12 col-md-6 stretch-card pb-sm-3 pb-lg-0">
-					<div class="card bg-success">
-						<div class="card-body px-3 py-4">
-							<div class="d-flex justify-content-between align-items-start">
-								<div class="color-card">
-									<p class="mb-0 color-card-head">Affiliate</p>
-									<h2 class="text-white">2368</h2>
-								</div>
-								<i class="card-icon-indicator mdi mdi-account-circle bg-inverse-icon-success"></i>
-							</div>
-							<h6 class="text-white">20.32% Since last month</h6>
-						</div>
-					</div>
-				</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+	<div class="bg-dark-bg-card p-6 rounded-custom border border-gray-800 shadow-xl">
+		<div class="flex justify-between items-start">
+			<div class="p-3 bg-blue-500/10 rounded-lg">
+				<i class="mdi mdi-account-multiple text-accent-blue text-2xl"></i>
 			</div>
+			<span class="text-green-500 text-sm font-medium flex items-center">
+				<i class="mdi mdi-trending-up mr-1"></i> +12%
+			</span>
 		</div>
-		<div class="col-xl-3 col-lg-12 stretch-card grid-margin">
-			<div class="row">
-				<div class="col-xl-12 col-md-6 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
-					<div class="card bg-warning">
-						<div class="card-body px-3 py-4">
-							<div class="d-flex justify-content-between align-items-start">
-								<div class="color-card">
-									<p class="mb-0 color-card-head">Sales</p>
-									<h2 class="text-white">
-										$8,753.<span class="h5">00</span>
-									</h2>
-								</div>
-								<i class="card-icon-indicator mdi mdi-basket bg-inverse-icon-warning"></i>
-							</div>
-							<h6 class="text-white">18.33% Since last month</h6>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-12 col-md-6 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
-					<div class="card bg-danger">
-						<div class="card-body px-3 py-4">
-							<div class="d-flex justify-content-between align-items-start">
-								<div class="color-card">
-									<p class="mb-0 color-card-head">Margin</p>
-									<h2 class="text-white">
-										$5,300.<span class="h5">00</span>
-									</h2>
-								</div>
-								<i class="card-icon-indicator mdi mdi-cube-outline bg-inverse-icon-danger"></i>
-							</div>
-							<h6 class="text-white">13.21% Since last month</h6>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-12 col-md-6 stretch-card grid-margin grid-margin-sm-0 pb-sm-3 pb-lg-0 pb-xl-3">
-					<div class="card bg-primary">
-						<div class="card-body px-3 py-4">
-							<div class="d-flex justify-content-between align-items-start">
-								<div class="color-card">
-									<p class="mb-0 color-card-head">Orders</p>
-									<h2 class="text-white">
-										$1,753.<span class="h5">00</span>
-									</h2>
-								</div>
-								<i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-primary"></i>
-							</div>
-							<h6 class="text-white">67.98% Since last month</h6>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-12 col-md-6 stretch-card pb-sm-3 pb-lg-0">
-					<div class="card bg-success">
-						<div class="card-body px-3 py-4">
-							<div class="d-flex justify-content-between align-items-start">
-								<div class="color-card">
-									<p class="mb-0 color-card-head">Affiliate</p>
-									<h2 class="text-white">2368</h2>
-								</div>
-								<i class="card-icon-indicator mdi mdi-account-circle bg-inverse-icon-success"></i>
-							</div>
-							<h6 class="text-white">20.32% Since last month</h6>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-xl-3 col-lg-12 stretch-card grid-margin">
-			<div class="row">
-				<div class="col-xl-12 col-md-6 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
-					<div class="card bg-warning">
-						<div class="card-body px-3 py-4">
-							<div class="d-flex justify-content-between align-items-start">
-								<div class="color-card">
-									<p class="mb-0 color-card-head">Sales</p>
-									<h2 class="text-white">
-										$8,753.<span class="h5">00</span>
-									</h2>
-								</div>
-								<i class="card-icon-indicator mdi mdi-basket bg-inverse-icon-warning"></i>
-							</div>
-							<h6 class="text-white">18.33% Since last month</h6>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-12 col-md-6 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
-					<div class="card bg-danger">
-						<div class="card-body px-3 py-4">
-							<div class="d-flex justify-content-between align-items-start">
-								<div class="color-card">
-									<p class="mb-0 color-card-head">Margin</p>
-									<h2 class="text-white">
-										$5,300.<span class="h5">00</span>
-									</h2>
-								</div>
-								<i class="card-icon-indicator mdi mdi-cube-outline bg-inverse-icon-danger"></i>
-							</div>
-							<h6 class="text-white">13.21% Since last month</h6>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-12 col-md-6 stretch-card grid-margin grid-margin-sm-0 pb-sm-3 pb-lg-0 pb-xl-3">
-					<div class="card bg-primary">
-						<div class="card-body px-3 py-4">
-							<div class="d-flex justify-content-between align-items-start">
-								<div class="color-card">
-									<p class="mb-0 color-card-head">Orders</p>
-									<h2 class="text-white">
-										$1,753.<span class="h5">00</span>
-									</h2>
-								</div>
-								<i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-primary"></i>
-							</div>
-							<h6 class="text-white">67.98% Since last month</h6>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-12 col-md-6 stretch-card pb-sm-3 pb-lg-0">
-					<div class="card bg-success">
-						<div class="card-body px-3 py-4">
-							<div class="d-flex justify-content-between align-items-start">
-								<div class="color-card">
-									<p class="mb-0 color-card-head">Affiliate</p>
-									<h2 class="text-white">2368</h2>
-								</div>
-								<i class="card-icon-indicator mdi mdi-account-circle bg-inverse-icon-success"></i>
-							</div>
-							<h6 class="text-white">20.32% Since last month</h6>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-xl-3 col-lg-12 stretch-card grid-margin">
-			<div class="row">
-				<div class="col-xl-12 col-md-6 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
-					<div class="card bg-warning">
-						<div class="card-body px-3 py-4">
-							<div class="d-flex justify-content-between align-items-start">
-								<div class="color-card">
-									<p class="mb-0 color-card-head">Sales</p>
-									<h2 class="text-white">
-										$8,753.<span class="h5">00</span>
-									</h2>
-								</div>
-								<i class="card-icon-indicator mdi mdi-basket bg-inverse-icon-warning"></i>
-							</div>
-							<h6 class="text-white">18.33% Since last month</h6>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-12 col-md-6 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
-					<div class="card bg-danger">
-						<div class="card-body px-3 py-4">
-							<div class="d-flex justify-content-between align-items-start">
-								<div class="color-card">
-									<p class="mb-0 color-card-head">Margin</p>
-									<h2 class="text-white">
-										$5,300.<span class="h5">00</span>
-									</h2>
-								</div>
-								<i class="card-icon-indicator mdi mdi-cube-outline bg-inverse-icon-danger"></i>
-							</div>
-							<h6 class="text-white">13.21% Since last month</h6>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-12 col-md-6 stretch-card grid-margin grid-margin-sm-0 pb-sm-3 pb-lg-0 pb-xl-3">
-					<div class="card bg-primary">
-						<div class="card-body px-3 py-4">
-							<div class="d-flex justify-content-between align-items-start">
-								<div class="color-card">
-									<p class="mb-0 color-card-head">Orders</p>
-									<h2 class="text-white">
-										$1,753.<span class="h5">00</span>
-									</h2>
-								</div>
-								<i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-primary"></i>
-							</div>
-							<h6 class="text-white">67.98% Since last month</h6>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-12 col-md-6 stretch-card pb-sm-3 pb-lg-0">
-					<div class="card bg-success">
-						<div class="card-body px-3 py-4">
-							<div class="d-flex justify-content-between align-items-start">
-								<div class="color-card">
-									<p class="mb-0 color-card-head">Affiliate</p>
-									<h2 class="text-white">2368</h2>
-								</div>
-								<i class="card-icon-indicator mdi mdi-account-circle bg-inverse-icon-success"></i>
-							</div>
-							<h6 class="text-white">20.32% Since last month</h6>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-xl-3 stretch-card grid-margin">
-		</div>
+		<h3 class="mt-4 text-gray-400 text-sm font-medium">Toplam Müşteri</h3>
+		<p class="text-3xl font-bold mt-1 text-white">1,284</p>
 	</div>
 </div>
+
+<div class="bg-dark-bg-card p-6 rounded-custom border border-gray-800 shadow-xl">
+	<div class="flex items-center justify-between mb-6">
+		<h2 class="text-xl font-bold text-white">Büyüme Analizi</h2>
+	</div>
+	<div class="h-[400px] w-full">
+		<canvas id="growthChart"></canvas>
+	</div>
+</div>
+<!-- Recent Messages Table -->
+<div class="bg-dark-bg-card rounded-custom border border-gray-800 shadow-xl overflow-hidden">
+	<div class="p-6 border-b border-gray-800 flex justify-between items-center">
+		<h2 class="text-xl font-bold text-white">Recent Messages</h2>
+		<button class="text-accent-blue hover:underline text-sm font-medium">View All</button>
+	</div>
+	<div class="overflow-x-auto">
+		<table class="w-full text-left">
+			<thead>
+				<tr class="text-gray-500 text-xs font-bold uppercase tracking-wider bg-black/20">
+					<th class="px-6 py-4">Sender</th>
+					<th class="px-6 py-4">Topic</th>
+					<th class="px-6 py-4">Date</th>
+					<th class="px-6 py-4">Status</th>
+					<th class="px-6 py-4 text-right">Actions</th>
+				</tr>
+			</thead>
+			<tbody class="divide-y divide-gray-800">
+				<!-- Row 1 -->
+				<tr class="hover:bg-white/5 transition-all-custom">
+					<td class="px-6 py-4">
+						<div class="flex items-center gap-3">
+							<img alt="User" class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhVAnSuVvUkrGOEL9MV6O077To-r2yCVh7JXFpRSjMPaPS_rL0itq1EvcxgkYJCxzhjl4Cji3eO9-oWh4lY36nNKM9S32r0La2ENClbpDp8D8HFh2OJjIWvT9Oow_xAR1V8l7IzBSxcSASuQbLQQiCfsR21pyd4ulRs0jo4GRbpG90lNnGa6Bjw_oH-6bb0sJXCm6vvhT13Iwn4hZuWTlLvRi8NxrCDTb7Agqb95eSZIGwe5rs_4HPQq9u1SXtCfsfog4RzGMzAx4H" />
+							<div>
+								<p class="text-sm font-medium text-white">Johnathan Smith</p>
+								<p class="text-xs text-gray-500">jsmith@example.com</p>
+							</div>
+						</div>
+					</td>
+					<td class="px-6 py-4 text-sm text-gray-300">Technical Inquiry regarding API</td>
+					<td class="px-6 py-4 text-sm text-gray-400">Oct 24, 2023</td>
+					<td class="px-6 py-4">
+						<span class="px-2.5 py-1 text-[11px] font-bold rounded-full bg-blue-500/10 text-accent-blue uppercase tracking-wider">Pending</span>
+					</td>
+					<td class="px-6 py-4 text-right">
+						<button class="text-gray-400 hover:text-white mx-2"><i class="mdi mdi-eye"></i></button>
+						<button class="text-gray-400 hover:text-red-400 mx-2"><i class="mdi mdi-delete"></i></button>
+					</td>
+				</tr>
+				<!-- Row 2 -->
+				<tr class="hover:bg-white/5 transition-all-custom">
+					<td class="px-6 py-4">
+						<div class="flex items-center gap-3">
+							<img alt="User" class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGfxoQ6Eh89_hIbLFIorZ6D8HSjE8AUiUnL1HuVwIKsLBjApQziwC8gdmGr927w6vPjbarJ24A_swiw4QxQQEIFS0qESgCOFWk32Y4F_JF_nq-q6RsGNHGnOHMe3hTWtXfNj1jKsdSrnJGWoERjQ4H4_7pSHJ39agPGAycJ5K8b8LsMg3-g4CCwH6HfgkQnDNTREBZIzXwSjIgpI5D3T_p_BV4xFh0ddWPqfLpWZ8jqVDF19QV1x5QYwphXPVVsW11TeftrDsY-WKU" />
+							<div>
+								<p class="text-sm font-medium text-white">Elena Vance</p>
+								<p class="text-xs text-gray-500">elena.v@startup.io</p>
+							</div>
+						</div>
+					</td>
+					<td class="px-6 py-4 text-sm text-gray-300">Partnership Opportunity</td>
+					<td class="px-6 py-4 text-sm text-gray-400">Oct 23, 2023</td>
+					<td class="px-6 py-4">
+						<span class="px-2.5 py-1 text-[11px] font-bold rounded-full bg-green-500/10 text-green-500 uppercase tracking-wider">Completed</span>
+					</td>
+					<td class="px-6 py-4 text-right">
+						<button class="text-gray-400 hover:text-white mx-2"><i class="mdi mdi-eye"></i></button>
+						<button class="text-gray-400 hover:text-red-400 mx-2"><i class="mdi mdi-delete"></i></button>
+					</td>
+				</tr>
+				<!-- Row 3 -->
+				<tr class="hover:bg-white/5 transition-all-custom">
+					<td class="px-6 py-4">
+						<div class="flex items-center gap-3">
+							<img alt="User" class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdnlKv45CcBowoHTNgOvjdFhvMaUlrrfLPzLtWe9VzDVDypX-RAP9wnrGE6YF-skxoVdUDgwn9yhxFmWzkzhC1mJGxDJ1679_x79OrNMLuAtLU1ZjBOgAD3JVuMiCdY1gUwk4iNGv9ZHaqjRWH1SUfv8HJ9-GTMZ_7xBcD9w-vufdB1GxS0WTYNdMhjOttpDBKNitFeTIxa-Ud1S8pFtU4ZKsu_kYJTUvkYIURISbI4ryuWvdJF5I1PZvNkFcm6m1nZM8Y42YSfc2q" />
+							<div>
+								<p class="text-sm font-medium text-white">Mark Zucker</p>
+								<p class="text-xs text-gray-500">mark@connect.com</p>
+							</div>
+						</div>
+					</td>
+					<td class="px-6 py-4 text-sm text-gray-300">Security feedback</td>
+					<td class="px-6 py-4 text-sm text-gray-400">Oct 21, 2023</td>
+					<td class="px-6 py-4">
+						<span class="px-2.5 py-1 text-[11px] font-bold rounded-full bg-blue-500/10 text-accent-blue uppercase tracking-wider">Pending</span>
+					</td>
+					<td class="px-6 py-4 text-right">
+						<button class="text-gray-400 hover:text-white mx-2"><i class="mdi mdi-eye"></i></button>
+						<button class="text-gray-400 hover:text-red-400 mx-2"><i class="mdi mdi-delete"></i></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+@section Scripts {
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const ctx = document.getElementById('growthChart').getContext('2d');
+
+			const blueGradient = ctx.createLinearGradient(0, 0, 0, 400);
+			blueGradient.addColorStop(0, 'rgba(59, 130, 246, 0.4)');
+			blueGradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
+
+			const purpleGradient = ctx.createLinearGradient(0, 0, 0, 400);
+			purpleGradient.addColorStop(0, 'rgba(168, 85, 247, 0.4)');
+			purpleGradient.addColorStop(1, 'rgba(168, 85, 247, 0)');
+
+			new Chart(ctx, {
+				type: 'line',
+				data: {
+					labels: ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'],
+					datasets: [
+						{
+							label: 'Ziyaretçiler',
+							data: [31, 40, 28, 51, 42, 109, 100],
+							borderColor: '#3b82f6',
+							backgroundColor: blueGradient,
+							fill: true,
+							tension: 0.4,
+							borderWidth: 3,
+							pointRadius: 4,
+							pointBackgroundColor: '#3b82f6',
+						},
+						{
+							label: 'Aktif Kullanıcılar',
+							data: [11, 32, 45, 32, 34, 52, 41],
+							borderColor: '#a855f7',
+							backgroundColor: purpleGradient,
+							fill: true,
+							tension: 0.4,
+							borderWidth: 3,
+							pointRadius: 4,
+							pointBackgroundColor: '#a855f7',
+						}
+					]
+				},
+				options: {
+					responsive: true,
+					maintainAspectRatio: false,
+					plugins: {
+						legend: { labels: { color: '#9ca3af', font: { size: 12 } } }
+					},
+					scales: {
+						y: {
+							grid: { color: 'rgba(75, 85, 99, 0.2)', drawBorder: false },
+							ticks: { color: '#6b7280' }
+						},
+						x: {
+							grid: { display: false },
+							ticks: { color: '#6b7280' }
+						}
+					}
+				}
+			});
+		});
+	</script>
+}

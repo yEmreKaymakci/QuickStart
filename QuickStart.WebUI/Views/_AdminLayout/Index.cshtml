@@ -1,28 +1,27 @@
-﻿
-@{
-    Layout = null;
+﻿@{
+	Layout = null;
 }
 
 <!DOCTYPE html>
 <html lang="en">
-@await Component.InvokeAsync("_AdminLayoutHeadComponentPartial")
-<body>
-    <div class="container-scroller">
-        @await Component.InvokeAsync("_AdminLayoutSidebarComponentPartial")
-        <div class="container-fluid page-body-wrapper">
 
-            @await Component.InvokeAsync("_AdminLayoutNavbarComponentPartial")
-            <div class="main-panel">
-                <div class="content-wrapper pb-0">
-                    @RenderBody()
-                </div>
-                @await Component.InvokeAsync("_AdminLayoutFooterComponentPartial")
-            </div>
-            <!-- main-panel ends -->
-        </div>
-        <!-- page-body-wrapper end s -->
-    </div>
-    <!-- container-scroller -->
-    @await Component.InvokeAsync("_AdminLayoutScriptComponentPartial")
+@await Component.InvokeAsync("_AdminLayoutHeadComponentPartial")
+
+<body class="flex h-screen overflow-hidden">
+	@await Component.InvokeAsync("_AdminLayoutSidebarComponentPartial")
+
+	<main class="flex-1 flex flex-col overflow-hidden">
+
+		@await Component.InvokeAsync("_AdminLayoutNavbarComponentPartial")
+
+		<div class="flex-1 overflow-y-auto p-6 md:p-8 space-y-6">
+			@RenderBody()
+		</div>
+
+	</main>
+
+	@await Component.InvokeAsync("_AdminLayoutScriptComponentPartial")
+
+	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
