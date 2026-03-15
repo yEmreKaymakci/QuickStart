@@ -30,3 +30,40 @@ function toggleServices() {
         // document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
     }
 }
+
+// Admin
+document.addEventListener('DOMContentLoaded', function () {
+    const globalModal = document.getElementById('globalTextModal');
+
+    // Eğer sayfada modal yoksa kodu hiç çalıştırma (Hata vermemesi için)
+    if (!globalModal) return;
+
+    const modalTitle = document.getElementById('globalModalTitle');
+    const modalContent = document.getElementById('globalModalContent');
+
+    // Sayfadaki tüm tıklamaları dinle (Event Delegation)
+    document.addEventListener('click', function (e) {
+
+        // 1. Modalı Açma İşlemi
+        const triggerBtn = e.target.closest('.show-full-text-btn');
+        if (triggerBtn) {
+            // Tıklanan yerdeki data özelliklerini al
+            const title = triggerBtn.getAttribute('data-title');
+            const content = triggerBtn.getAttribute('data-content');
+
+            // Modala verileri bas ve görünür yap
+            modalTitle.innerText = title ? title : 'Detay';
+            modalContent.innerText = content ? content : 'İçerik bulunamadı.';
+            globalModal.classList.remove('hidden');
+        }
+
+        // 2. Modalı Kapatma İşlemi
+        // Kapat butonlarına veya modalın dışındaki siyah arkaplana tıklanırsa
+        if (e.target.closest('#closeGlobalModalBtn') ||
+            e.target.closest('#closeGlobalModalBtn2') ||
+            e.target === globalModal) {
+
+            globalModal.classList.add('hidden');
+        }
+    });
+});
