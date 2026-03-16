@@ -1,48 +1,78 @@
-﻿
-@model List<QuickStart.WebUI.Dtos.Services.ResultServicesDto>
+﻿@model List<QuickStart.WebUI.Dtos.Services.ResultServicesDto>
 
 @{
 	ViewData["Title"] = "Index";
 	Layout = "~/Views/_AdminLayout/Index.cshtml";
 }
 
-<div class="col-lg-12 grid-margin stretch-card">
-	<div class="card">
-		<div class="card-body">
-			<h4 class="card-title">Hizmetler</h4>
-			<p class="card-description">
-				Hizmet<code>Listesi</code>
-			</p>
-			<div class="table-responsive">
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Hizmet</th>
-							<th>Açıklama</th>
-							<th>İcon</th>
-							<th>Sil</th>
-							<th>Güncelle</th>
+<div class="bg-dark-bg-card rounded-custom border border-gray-800 shadow-xl overflow-hidden">
 
-						</tr>
-					</thead>
-					<tbody>
-						@foreach (var item in Model)
-						{
-							<tr>
-								<td>@item.Title</td>
-								<td>@item.Description</td>
-								<td>@item.IconUrl</td>
-								<td><a href="/AdminService/DeleteService/@item.Id" class="btn btn-danger">Sil</a></td>
-								<td><a href="/AdminService/UpdateService/@item.Id" class="btn btn-success">Güncelle</a></td>
-							</tr>
-						}
-
-
-					</tbody>
-				</table>
-				<a href="/AdminService/CreateService" class="btn btn-info">Yeni Hizmet Girişi</a>
-			</div>
+	<div class="p-6 border-b border-gray-800 flex justify-between items-center flex-wrap gap-4">
+		<div>
+			<h2 class="text-xl font-bold text-white">Hizmetler Yönetimi</h2>
+			<p class="text-sm text-gray-400 mt-1">Platformda sunduğunuz hizmetleri buradan yönetebilirsiniz.</p>
 		</div>
+		<a href="/AdminService/CreateService" class="inline-flex items-center gap-2 bg-accent-blue hover:bg-blue-600 text-white px-4 py-2 rounded-custom transition-all-custom text-sm font-medium shadow-lg shadow-blue-500/30">
+			<i class="mdi mdi-plus"></i> Yeni Hizmet Ekle
+		</a>
 	</div>
+
+	<div class="overflow-x-auto">
+		<table class="w-full text-left whitespace-nowrap">
+			<thead>
+				<tr class="text-gray-500 text-xs font-bold uppercase tracking-wider bg-black/20">
+					<th class="px-6 py-4">#</th>
+					<th class="px-6 py-4">Hizmet Başlığı</th>
+					<th class="px-6 py-4">Açıklama</th>
+					<th class="px-6 py-4">İkon</th>
+					<th class="px-6 py-4 text-right">İşlemler</th>
+				</tr>
+			</thead>
+			<tbody class="divide-y divide-gray-800">
+				@foreach (var item in Model)
+				{
+					<tr class="hover:bg-white/5 transition-all-custom">
+						<td class="px-6 py-4 text-sm text-gray-400">@item.Id</td>
+						<td class="px-6 py-4 text-sm font-medium text-white">@item.Title</td>
+
+						<td class="px-6 py-4 text-sm text-gray-400">
+							<div class="max-w-[200px] truncate cursor-pointer hover:text-accent-blue transition-colors show-full-text-btn"
+								 data-title="Hizmet Açıklaması"
+								 data-content="@item.Description">
+								@item.Description
+							</div>
+						</td>
+
+						<td class="px-6 py-4 text-sm text-gray-400">
+							<div class="flex items-center gap-2">
+								<i class="@item.IconUrl text-xl text-accent-purple"></i>
+								<span class="max-w-[120px] truncate cursor-pointer hover:text-accent-blue transition-colors show-full-text-btn"
+									  data-title="İkon Class Bilgisi"
+									  data-content="@item.IconUrl">
+									@item.IconUrl
+								</span>
+							</div>
+						</td>
+
+						<td class="px-6 py-4 text-right space-x-2">
+							<a href="/AdminService/UpdateService/@item.Id" class="inline-flex items-center justify-center bg-green-500/10 text-green-500 hover:bg-green-500/20 px-3 py-1.5 rounded-md text-xs font-bold transition-all-custom">
+								<i class="mdi mdi-pencil mr-1"></i> Güncelle
+							</a>
+							<a href="/AdminService/DeleteService/@item.Id" class="inline-flex items-center justify-center bg-red-500/10 text-red-400 hover:bg-red-500/20 px-3 py-1.5 rounded-md text-xs font-bold transition-all-custom">
+								<i class="mdi mdi-delete mr-1"></i> Sil
+							</a>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+
+	@if (!Model.Any())
+	{
+		<div class="p-8 text-center text-gray-500">
+			<i class="mdi mdi-format-list-bulleted text-4xl mb-2"></i>
+			<p>Henüz bir hizmet verisi eklenmemiş.</p>
+		</div>
+	}
 </div>

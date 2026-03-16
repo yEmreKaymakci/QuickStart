@@ -1,4 +1,4 @@
-﻿<aside class="w-64 bg-dark-bg-card flex flex-col border-r border-gray-800 transition-all-custom shrink-0" data-purpose="sidebar">
+<aside class="w-64 bg-dark-bg-card flex flex-col border-r border-gray-800 transition-all-custom shrink-0" data-purpose="sidebar">
     <div class="p-6 flex items-center gap-3">
         <div class="w-10 h-10 bg-gradient-to-tr from-accent-blue to-accent-purple rounded-lg flex items-center justify-center">
             <i class="mdi mdi-wind-power text-2xl text-white"></i>
@@ -7,48 +7,74 @@
             Breeze Admin
         </span>
     </div>
-    <nav class="flex-1 px-4 space-y-2 overflow-y-auto mt-4">
-        <p class="text-xs font-semibold text-gray-500 uppercase px-2 mb-2">Genel</p>
-        <a class="flex items-center gap-3 px-4 py-3 rounded-custom bg-gradient-to-r from-blue-600/20 to-purple-600/20 text-accent-blue border border-blue-500/20" href="#">
+    <nav class="flex-1 px-4 space-y-1 overflow-y-auto mt-2 pb-4">
+
+        <!-- Genel -->
+        <p class="text-xs font-semibold text-gray-500 uppercase px-2 mb-2 mt-2">Genel</p>
+        <a class="flex items-center gap-3 px-4 py-2.5 rounded-custom bg-gradient-to-r from-blue-600/20 to-purple-600/20 text-accent-blue border border-blue-500/20" href="/AdminDashboard/Index">
             <i class="mdi mdi-view-dashboard"></i>
             <span>Ana Sayfa</span>
         </a>
-        <a class="flex items-center gap-3 px-4 py-3 rounded-custom text-gray-400 hover:bg-white/5 hover:text-white transition-all-custom" href="#">
+
+        <!-- İçerik Yönetimi -->
+        <p class="text-xs font-semibold text-gray-500 uppercase px-2 mb-2 mt-4">İçerik Yönetimi</p>
+        <a class="flex items-center gap-3 px-4 py-2.5 rounded-custom text-gray-400 hover:bg-white/5 hover:text-white transition-all-custom" href="/AdminAbout/Index">
             <i class="mdi mdi-information-outline"></i>
             <span>Hakkımızda</span>
         </a>
-        <a class="flex items-center gap-3 px-4 py-3 rounded-custom text-gray-400 hover:bg-white/5 hover:text-white transition-all-custom" href="#">
+        <a class="flex items-center gap-3 px-4 py-2.5 rounded-custom text-gray-400 hover:bg-white/5 hover:text-white transition-all-custom" href="/AdminService/Index">
             <i class="mdi mdi-cog-box"></i>
             <span>Hizmetler</span>
         </a>
-        <a class="flex items-center gap-3 px-4 py-3 rounded-custom text-gray-400 hover:bg-white/5 hover:text-white transition-all-custom" href="#">
-            <i class="mdi mdi-account-group"></i>
-            <span>Müşteriler</span>
+        <a class="flex items-center gap-3 px-4 py-2.5 rounded-custom text-gray-400 hover:bg-white/5 hover:text-white transition-all-custom" href="/AdminSlider/Index">
+            <i class="mdi mdi-image-multiple-outline"></i>
+            <span>Slider</span>
         </a>
-        <a class="flex items-center gap-3 px-4 py-3 rounded-custom text-gray-400 hover:bg-white/5 hover:text-white transition-all-custom" href="#">
+        <a class="flex items-center gap-3 px-4 py-2.5 rounded-custom text-gray-400 hover:bg-white/5 hover:text-white transition-all-custom" href="/AdminFeature/Index">
             <i class="mdi mdi-star-outline"></i>
             <span>Özellikler</span>
         </a>
-        <p class="text-xs font-semibold text-gray-500 uppercase px-2 mt-6 mb-2">Analitik</p>
-        <a class="flex items-center gap-3 px-4 py-3 rounded-custom text-gray-400 hover:bg-white/5 hover:text-white transition-all-custom" href="#">
-            <i class="mdi mdi-chart-bar"></i>
-            <span>İstatistik</span>
+        <a class="flex items-center gap-3 px-4 py-2.5 rounded-custom text-gray-400 hover:bg-white/5 hover:text-white transition-all-custom" href="/AdminFeatureService/Index">
+            <i class="mdi mdi-wrench-outline"></i>
+            <span>Özellik Hizmetleri</span>
         </a>
-        <a class="flex items-center gap-3 px-4 py-3 rounded-custom text-gray-400 hover:bg-white/5 hover:text-white transition-all-custom" href="#">
+        <a class="flex items-center gap-3 px-4 py-2.5 rounded-custom text-gray-400 hover:bg-white/5 hover:text-white transition-all-custom" href="/AdminTestimonial/Index">
+            <i class="mdi mdi-account-star-outline"></i>
+            <span>Referanslar</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-2.5 rounded-custom text-gray-400 hover:bg-white/5 hover:text-white transition-all-custom" href="/AdminFAQ/Index">
+            <i class="mdi mdi-help-circle-outline"></i>
+            <span>SSS</span>
+        </a>
+
+        <!-- Kullanıcı & İletişim -->
+        <p class="text-xs font-semibold text-gray-500 uppercase px-2 mb-2 mt-4">Kullanıcı & İletişim</p>
+        <a class="flex items-center gap-3 px-4 py-2.5 rounded-custom text-gray-400 hover:bg-white/5 hover:text-white transition-all-custom" href="/AdminClient/Index">
+            <i class="mdi mdi-account-group-outline"></i>
+            <span>Müşteri Logoları</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-2.5 rounded-custom text-gray-400 hover:bg-white/5 hover:text-white transition-all-custom" href="/AdminContact/Index">
+            <i class="mdi mdi-map-marker-outline"></i>
+            <span>İletişim Bilgileri</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-2.5 rounded-custom text-gray-400 hover:bg-white/5 hover:text-white transition-all-custom" href="/AdminSubscribe/Index">
             <i class="mdi mdi-email-outline"></i>
-            <span>Mesajlar</span>
-            <span class="ml-auto bg-accent-purple text-white text-[10px] px-1.5 py-0.5 rounded-full">5</span>
+            <span>Aboneler</span>
         </a>
-        <a class="flex items-center gap-3 px-4 py-3 rounded-custom text-gray-400 hover:bg-white/5 hover:text-white transition-all-custom" href="#">
-            <i class="mdi mdi-contacts-outline"></i>
-            <span>İletişim</span>
-        </a>
-    </nav>
-    <div class="p-4 mt-auto border-t border-gray-800 space-y-1">
-        <a class="flex items-center gap-3 px-4 py-3 rounded-custom text-gray-400 hover:bg-white/5 hover:text-white transition-all-custom" href="#">
+
+        <!-- Bildirimler -->
+        <p class="text-xs font-semibold text-gray-500 uppercase px-2 mb-2 mt-4">Bildirimler</p>
+        <a class="flex items-center gap-3 px-4 py-2.5 rounded-custom text-gray-400 hover:bg-white/5 hover:text-white transition-all-custom" href="/AdminNotification/Index">
             <i class="mdi mdi-bell-outline"></i>
             <span>Bildirimler</span>
         </a>
+        <a class="flex items-center gap-3 px-4 py-2.5 rounded-custom text-gray-400 hover:bg-white/5 hover:text-white transition-all-custom" href="/AdminNotificationType/Index">
+            <i class="mdi mdi-bell-cog-outline"></i>
+            <span>Bildirim Türleri</span>
+        </a>
+
+    </nav>
+    <div class="p-4 mt-auto border-t border-gray-800 space-y-1">
         <a class="flex items-center gap-3 px-4 py-3 rounded-custom text-red-400 hover:bg-red-500/10 transition-all-custom" href="#">
             <i class="mdi mdi-logout"></i>
             <span>Çıkış Yap</span>

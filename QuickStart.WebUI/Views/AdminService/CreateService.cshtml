@@ -1,24 +1,49 @@
 ﻿@model QuickStart.WebUI.Dtos.Services.CreateServicesDto
 
 @{
-    ViewData["Title"] = "CreateService";
-    Layout = "~/Views/_AdminLayout/Index.cshtml";
+	ViewData["Title"] = "CreateService";
+	Layout = "~/Views/_AdminLayout/Index.cshtml";
 }
 
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-<div class="container">
-    <br /> <br />
-    <form method="post">
-        <label> Hizmet ismi </label>
-        <input type="text" asp-for="Title" class="form-control" />
-        <br>
-        <label> Hizmet Açıklaması</label>
-        <input type="text" asp-for="Description" class="form-control" />
-        <br />
-        <label> İkon</label>
-        <input type="text" asp-for="IconUrl" class="form-control" />
-        <br />
-        <button class="btn btn-primary">Hizmeti Kaydet</button>
+<div class="max-w-3xl mx-auto mt-2">
+	<div class="bg-dark-bg-card rounded-custom border border-gray-800 shadow-xl overflow-hidden">
 
-    </form>
+		<div class="p-6 border-b border-gray-800 flex justify-between items-center flex-wrap gap-4">
+			<div>
+				<h2 class="text-xl font-bold text-white">Yeni Hizmet Ekle</h2>
+				<p class="text-sm text-gray-400 mt-1">Sisteme yeni bir hizmet başlığı ve detayı girin.</p>
+			</div>
+			<a href="/AdminService/Index" class="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-gray-300 px-4 py-2 rounded-custom transition-all-custom text-sm font-medium border border-gray-700">
+				<i class="mdi mdi-arrow-left"></i> Listeye Dön
+			</a>
+		</div>
+
+		<div class="p-6">
+			<form method="post" class="space-y-6">
+
+				<div>
+					<label asp-for="Title" class="block text-sm font-medium text-gray-400 mb-2">Hizmet İsmi</label>
+					<input type="text" asp-for="Title" class="w-full bg-dark-bg-deep border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-gray-300 focus:ring-2 focus:ring-accent-blue focus:border-accent-blue transition-all-custom outline-none" placeholder="Örn: Web Geliştirme" required />
+				</div>
+
+				<div>
+					<label asp-for="Description" class="block text-sm font-medium text-gray-400 mb-2">Hizmet Açıklaması</label>
+					<textarea asp-for="Description" rows="4" class="w-full bg-dark-bg-deep border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-gray-300 focus:ring-2 focus:ring-accent-blue focus:border-accent-blue transition-all-custom outline-none" placeholder="Hizmetin detaylarını buraya yazın..." required></textarea>
+				</div>
+
+				<div>
+					<label asp-for="IconUrl" class="block text-sm font-medium text-gray-400 mb-2">İkon Class (MDI veya Bootstrap İkonu)</label>
+					<input type="text" asp-for="IconUrl" class="w-full bg-dark-bg-deep border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-gray-300 focus:ring-2 focus:ring-accent-blue focus:border-accent-blue transition-all-custom outline-none" placeholder="Örn: bi bi-activity" />
+				</div>
+
+				<div class="pt-4 border-t border-gray-800 flex justify-end">
+					<button type="submit" class="inline-flex items-center gap-2 bg-accent-blue hover:bg-blue-600 text-white px-6 py-2.5 rounded-lg transition-all-custom text-sm font-medium shadow-lg shadow-blue-500/30">
+						<i class="mdi mdi-content-save"></i> Hizmeti Kaydet
+					</button>
+				</div>
+
+			</form>
+		</div>
+
+	</div>
 </div>
