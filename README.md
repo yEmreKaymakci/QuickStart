@@ -39,7 +39,7 @@ Proje sadece görsel olarak değil, aynı zamanda işlevsel olarak da zenginleş
 Proje, güncel teknolojiler kullanılarak modern mimari standartlarına uygun olarak inşa edilmiştir:
 
 **Backend:**
-- **.NET Core 6 / 8** (ASP.NET Core Web API & MVC)
+- **.NET Core 6 ** (ASP.NET Core Web API & MVC)
 - **C#**
 - **Entity Framework Core** (ORM)
 - **MSSQL** (Veritabanı)
