@@ -1,10 +1,8 @@
-﻿<!-- BEGIN: External Scripts and Styles -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script src="~/js/site.js" asp-append-version="true"></script>
-<!-- END: External Scripts and Styles -->
 <script>
     tailwind.config = {
       theme: {
@@ -34,22 +32,75 @@
       color: #e5e7eb;
       font-family: 'Inter', sans-serif;
     }
-    /* Custom Scrollbar for Dark Theme */
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--bg-deep);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #333;
-      border-radius: 10px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--accent-blue);
-    }
-    /* Smooth transitions */
-    .transition-all-custom {
-      transition: all 0.3s ease;
-    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-deep); }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-blue); }
+    .transition-all-custom { transition: all 0.3s ease; }
 </style>
+<script>
+    (function () {
+        const STORAGE_KEY = 'gs_query';
+
+        function applyGlobalSearch(query) {
+            const q = (query || '').trim().toLowerCase();
+
+            const rows = document.querySelectorAll('table tbody tr');
+            if (!rows.length) return;
+
+            let visibleCount = 0;
+            rows.forEach(function (row) {
+                const text = row.textContent.toLowerCase();
+                const show = !q || text.includes(q);
+                row.style.display = show ? '' : 'none';
+                if (show) visibleCount++;
+            });
+
+            const emptyEl = document.getElementById('gs-empty-global');
+            if (!emptyEl && !visibleCount && q) {
+                const tbl = document.querySelector('table');
+                if (tbl) {
+                    const div = document.createElement('div');
+                    div.id = 'gs-empty-global';
+                    div.className = 'p-10 text-center text-gray-500';
+                    div.innerHTML = '<i class="mdi mdi-magnify-remove-outline text-4xl block mb-2 opacity-40"></i><p class="text-sm">Arama sonucu bulunamadı: <strong class="text-gray-300">' + query + '</strong></p>';
+                    tbl.insertAdjacentElement('afterend', div);
+                }
+            } else if (emptyEl && (!q || visibleCount)) {
+                emptyEl.remove();
+            }
+
+            const badge = document.getElementById('gs-result-badge');
+            if (badge) {
+                if (q && rows.length) {
+                    badge.textContent = visibleCount + ' sonuç';
+                    badge.classList.remove('hidden');
+                } else {
+                    badge.classList.add('hidden');
+                }
+            }
+
+            const inPageSearch = document.getElementById('searchInput');
+            if (inPageSearch && inPageSearch.value.toLowerCase() !== q) {
+                inPageSearch.value = query;
+                inPageSearch.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+        }
+
+        window.globalSearchEngine = { apply: applyGlobalSearch };
+
+        document.addEventListener('globalSearch', function (e) {
+            sessionStorage.setItem(STORAGE_KEY, e.detail.query || '');
+            applyGlobalSearch(e.detail.query);
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const saved = sessionStorage.getItem(STORAGE_KEY) || '';
+            if (saved) {
+                applyGlobalSearch(saved);
+                const navInput = document.getElementById('gs-navbar-input');
+                if (navInput) navInput.value = saved;
+            }
+        });
+    })();
+</script>

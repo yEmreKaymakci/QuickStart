@@ -1,5 +1,6 @@
-﻿@using QuickStart.WebUI.Dtos.Contacts
-@model ResultContactsDto
+@using QuickStart.WebUI.Dtos.Contacts
+@using QuickStart.WebUI.Dtos.NotificationTypes
+@model (ResultContactsDto ContactInfo, List<ResultNotificationTypeDto> NotificationTypes)
 
 <section id="contact" class="contact section">
 
@@ -16,7 +17,7 @@
 				<div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
 					<i class="bi bi-geo-alt"></i>
 					<h3>Adresimiz</h3>
-					<p>@Model.Address</p>
+					<p>@Model.ContactInfo.Address</p>
 				</div>
 			</div>
 
@@ -24,7 +25,7 @@
 				<div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
 					<i class="bi bi-telephone"></i>
 					<h3>Telefon Numaramız</h3>
-					<p>@Model.PhoneNumber</p>
+					<p>@Model.ContactInfo.PhoneNumber</p>
 				</div>
 			</div>
 
@@ -32,7 +33,7 @@
 				<div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
 					<i class="bi bi-envelope"></i>
 					<h3>E-posta Adresimiz</h3>
-					<p>@Model.Email</p>
+					<p>@Model.ContactInfo.Email</p>
 				</div>
 			</div>
 
@@ -40,28 +41,39 @@
 
 		<div class="row gy-4 mt-1">
 			<div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-				@Html.Raw(Model.MapUrl)
+				@Html.Raw(Model.ContactInfo.MapUrl)
 			</div>
 
 			<div class="col-lg-6">
-				<form asp-controller="DefaultMessage" asp-action="SendMessage" method="post" class="mt-4" data-aos="fade-up" data-aos-delay="400">
+				<form asp-controller="DefaultNotification" asp-action="SendNotification" method="post" class="mt-4" data-aos="fade-up" data-aos-delay="400">
 					<div class="row gy-4">
 
 						<div class="col-md-6">
-							<input type="text" name="name" class="form-control" placeholder="İsminiz" required="">
+							<input type="text" name="Title" class="form-control" placeholder="İsminiz" required="">
 						</div>
 
-						<div class="col-md-6 ">
-							<input type="email" class="form-control" name="email" placeholder="E-posta Adresiniz" required="">
-						</div>
-
-						<div class="col-md-12">
-							<input type="text" class="form-control" name="subject" placeholder="Konu" required="">
+						<div class="col-md-6">
+							<input type="email" name="Email" class="form-control" placeholder="E-posta Adresiniz" required="">
 						</div>
 
 						<div class="col-md-12">
-							<textarea class="form-control" name="content" rows="6" placeholder="Mesaj İçeriği" required=""></textarea>
+							<select name="NotificationTypeName" class="form-control" required="">
+								<option value="" disabled selected>-- Konu Seçiniz --</option>
+								@if (Model.NotificationTypes != null)
+								{
+									@foreach (var type in Model.NotificationTypes)
+									{
+										<option value="@type.Name">@type.Name</option>
+									}
+								}
+							</select>
 						</div>
+
+						<div class="col-md-12">
+							<textarea class="form-control" name="Content" rows="6" placeholder="Mesaj İçeriği" required=""></textarea>
+						</div>
+
+						<input type="hidden" name="IsRead" value="false" />
 
 						@if (TempData["SuccessMessage"] != null)
 						{
@@ -76,6 +88,7 @@
 								@TempData["ErrorMessage"]
 							</div>
 						}
+
 						<div class="col-md-12 text-center">
 							<button type="submit" class="btn btn-primary">Mesajı Gönder</button>
 						</div>

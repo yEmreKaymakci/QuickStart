@@ -1,6 +1,6 @@
 namespace QuickStart.WepApi.Dto
 {
-    public class ResultNotificationWithNotificationTypeDto
+    public class UpdateNotificationDto
     {
         public int NotificationId { get; set; }
         public string Title { get; set; }

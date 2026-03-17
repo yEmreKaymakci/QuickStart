@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 using QuickStart.WepApi.Entity.Common;
 
 namespace QuickStart.WepApi.Entity
@@ -13,12 +13,11 @@ namespace QuickStart.WepApi.Entity
 
         public bool IsRead { get; set; }
 
+        public string Email { get; set; }
+
         public int NotificationTypeId { get; set; }
 
         [JsonIgnore]
         public NotificationType? NotificationType { get; set; }
     }
 }
-//1 Numaralı sipariş alındı. Bildirim Türü: sipariş 
-//Akşam 11 de site güncellenecek. Bildirim Türü: Güncelleme 
-//2 numaralı süpariş alındı. Bildirim Türü: Sipariş 

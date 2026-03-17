@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using QuickStart.WebUI.Dtos.Contacts;
+using QuickStart.WebUI.Dtos.NotificationTypes;
 
 namespace QuickStart.WebUI.ViewComponents
 {
@@ -16,15 +17,28 @@ namespace QuickStart.WebUI.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:7051/api/Contact");
-            if (response.IsSuccessStatusCode)
+
+            // İletişim bilgilerini çek
+            ResultContactsDto? contactInfo = null;
+            var contactResponse = await client.GetAsync("https://localhost:7051/api/Contact");
+            if (contactResponse.IsSuccessStatusCode)
             {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultContactsDto>>(jsonData);
-                var firstItem = values?.FirstOrDefault();
-                return View(firstItem);
+                var json = await contactResponse.Content.ReadAsStringAsync();
+                var contacts = JsonConvert.DeserializeObject<List<ResultContactsDto>>(json);
+                contactInfo = contacts?.FirstOrDefault();
             }
-            return View(new ResultContactsDto());
+            contactInfo ??= new ResultContactsDto();
+
+            // Bildirim türlerini çek (dropdown için)
+            List<ResultNotificationTypeDto> notificationTypes = new();
+            var typesResponse = await client.GetAsync("https://localhost:7051/api/NotificationType");
+            if (typesResponse.IsSuccessStatusCode)
+            {
+                var json = await typesResponse.Content.ReadAsStringAsync();
+                notificationTypes = JsonConvert.DeserializeObject<List<ResultNotificationTypeDto>>(json) ?? new();
+            }
+
+            return View((contactInfo, notificationTypes));
         }
     }
 }

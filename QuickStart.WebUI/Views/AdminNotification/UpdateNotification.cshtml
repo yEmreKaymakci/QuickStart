@@ -1,9 +1,11 @@
 @using QuickStart.WebUI.Dtos.Notification
+@using QuickStart.WebUI.Dtos.NotificationTypes
 @model UpdateNotificationWithNotificationTypeDto
 
 @{
 	ViewData["Title"] = "UpdateNotification";
 	Layout = "~/Views/_AdminLayout/Index.cshtml";
+	var notificationTypes = ViewBag.NotificationTypes as List<ResultNotificationTypeDto> ?? new();
 }
 
 <div class="max-w-4xl mx-auto mt-2">
@@ -35,8 +37,19 @@
 				</div>
 
 				<div>
+					<label asp-for="Email" class="block text-sm font-medium text-gray-400 mb-2">E-posta</label>
+					<input type="email" asp-for="Email" class="w-full bg-dark-bg-deep border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-gray-300 focus:ring-2 focus:ring-accent-blue focus:border-accent-blue transition-all-custom outline-none" required />
+				</div>
+
+				<div>
 					<label asp-for="NotificationTypeName" class="block text-sm font-medium text-gray-400 mb-2">Bildirim Türü</label>
-					<input type="text" asp-for="NotificationTypeName" class="w-full bg-dark-bg-deep border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-gray-300 focus:ring-2 focus:ring-accent-blue focus:border-accent-blue transition-all-custom outline-none" required />
+					<select asp-for="NotificationTypeName" class="w-full bg-dark-bg-deep border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-gray-300 focus:ring-2 focus:ring-accent-blue focus:border-accent-blue transition-all-custom outline-none" required>
+						<option value="" disabled>-- Tür Seçiniz --</option>
+						@foreach (var type in notificationTypes)
+						{
+							<option value="@type.Name">@type.Name</option>
+						}
+					</select>
 				</div>
 
 				<div class="flex items-center gap-3">

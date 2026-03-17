@@ -1,18 +1,107 @@
-﻿<header class="h-16 border-b border-gray-800 bg-dark-bg-card flex items-center justify-between px-8 shrink-0">
-	<div class="relative w-96">
-		<i class="mdi mdi-magnify absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
-		<input class="w-full bg-dark-bg-deep border-gray-700 rounded-custom pl-10 pr-4 py-2 text-sm focus:ring-accent-blue focus:border-accent-blue text-gray-300" placeholder="Ara..." type="text" />
+@model List<QuickStart.WebUI.Dtos.Notification.ResultNotificationWithNotificationTypeDto>
+
+@{
+	var unreadCount = Model != null ? Model.Count(x => !x.IsRead) : 0;
+}
+
+<header class="h-16 border-b border-gray-800 bg-dark-bg-card flex items-center justify-between px-8 shrink-0">
+
+	<div class="relative w-96 flex items-center gap-2">
+		<div class="relative flex-1">
+			<i class="mdi mdi-magnify absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
+			<input id="gs-navbar-input"
+				   class="w-full bg-dark-bg-deep border border-gray-700 rounded-custom pl-9 pr-10 py-2 text-sm focus:ring-1 focus:ring-accent-blue focus:border-accent-blue text-gray-300 outline-none transition-all-custom"
+				   placeholder="Tabloda ara..."
+				   type="text"
+				   autocomplete="off" />
+			<button id="gs-clear-btn"
+					class="hidden absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-200 transition-colors"
+					title="Aramayı temizle">
+				<i class="mdi mdi-close-circle text-sm"></i>
+			</button>
+		</div>
+		<span id="gs-result-badge" class="hidden text-[10px] font-semibold text-accent-blue bg-accent-blue/10 px-2 py-0.5 rounded-full whitespace-nowrap"></span>
+		<button id="gs-filter-toggle"
+				title="Filtreleri Göster / Gizle"
+				class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-all-custom relative shrink-0">
+			<i class="mdi mdi-filter-outline text-base"></i>
+			<span id="gs-filter-dot" class="hidden absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-accent-blue"></span>
+		</button>
 	</div>
+
 	<div class="flex items-center gap-6">
 		<div class="flex items-center gap-4 text-gray-400">
+
+			<div class="relative" id="notifDropdownWrapper">
+				<button id="notifDropdownBtn" onclick="toggleNotifDropdown()" class="relative hover:text-white transition-colors focus:outline-none">
+					<i class="mdi mdi-bell-outline text-xl"></i>
+					@if (unreadCount > 0)
+					{
+						<span class="absolute -top-1 -right-1 min-w-[16px] h-4 px-0.5 bg-accent-blue rounded-full flex items-center justify-center text-[9px] font-bold text-white">@unreadCount</span>
+					}
+					else
+					{
+						<span class="absolute -top-1 -right-1 w-2 h-2 bg-accent-blue rounded-full"></span>
+					}
+				</button>
+
+				<div id="notifDropdown"
+					 class="hidden absolute right-0 mt-3 w-80 bg-dark-bg-card border border-gray-700 rounded-xl shadow-2xl z-50 overflow-hidden">
+					<div class="flex items-center justify-between px-4 py-3 border-b border-gray-700">
+						<span class="text-sm font-semibold text-white">Bildirimler</span>
+						@if (unreadCount > 0)
+						{
+							<span class="text-xs bg-accent-blue/20 text-accent-blue px-2 py-0.5 rounded-full">@unreadCount okunmamış</span>
+						}
+					</div>
+
+					<div class="max-h-72 overflow-y-auto">
+						@if (Model != null && Model.Any())
+						{
+							@foreach (var item in Model)
+							{
+								<a href="/Notification/MarkeAsRead/@item.NotificationId"
+								   class="flex items-start gap-3 px-4 py-3 hover:bg-gray-800/60 transition-colors border-b border-gray-800/50 @(item.IsRead ? "opacity-60" : "")">
+									<div class="mt-0.5 shrink-0">
+										<span class="inline-flex items-center justify-center w-8 h-8 rounded-full @(item.IsRead ? "bg-gray-700" : "bg-accent-blue/20")">
+											<i class="mdi mdi-bell text-sm @(item.IsRead ? "text-gray-400" : "text-accent-blue")"></i>
+										</span>
+									</div>
+									<div class="flex-1 min-w-0">
+										<p class="text-sm font-medium text-white truncate">@item.Title</p>
+										<p class="text-xs text-gray-400 mt-0.5 line-clamp-2">@item.Content</p>
+										@if (!string.IsNullOrEmpty(item.NotificationTypeName))
+										{
+											<span class="inline-block mt-1 text-[10px] font-semibold px-1.5 py-0.5 rounded bg-accent-purple/20 text-accent-purple">@item.NotificationTypeName</span>
+										}
+									</div>
+									@if (!item.IsRead)
+									{
+										<span class="mt-1.5 shrink-0 w-2 h-2 rounded-full bg-accent-blue"></span>
+									}
+								</a>
+							}
+						}
+						else
+						{
+							<div class="flex flex-col items-center justify-center py-8 text-gray-500">
+								<i class="mdi mdi-bell-off-outline text-3xl mb-2"></i>
+								<p class="text-xs">Bildirim bulunmuyor</p>
+							</div>
+						}
+					</div>
+
+					<div class="px-4 py-3 border-t border-gray-700 text-center">
+						<a href="/AdminNotification/Index" class="text-xs text-accent-blue hover:text-blue-400 font-medium transition-colors">Tüm Bildirimleri Gör</a>
+					</div>
+				</div>
+			</div>
+
 			<button class="relative hover:text-white transition-colors">
 				<i class="mdi mdi-message-text-outline text-xl"></i>
 				<span class="absolute -top-1 -right-1 w-2 h-2 bg-accent-purple rounded-full"></span>
 			</button>
-			<button class="relative hover:text-white transition-colors">
-				<i class="mdi mdi-bell-outline text-xl"></i>
-				<span class="absolute -top-1 -right-1 w-2 h-2 bg-accent-blue rounded-full"></span>
-			</button>
+
 		</div>
 		<div class="h-8 w-px bg-gray-800"></div>
 		<div class="flex items-center gap-3">
@@ -24,3 +113,66 @@
 		</div>
 	</div>
 </header>
+
+<script>
+	function toggleNotifDropdown() {
+		document.getElementById('notifDropdown').classList.toggle('hidden');
+	}
+
+	document.addEventListener('click', function (e) {
+		const wrapper = document.getElementById('notifDropdownWrapper');
+		if (wrapper && !wrapper.contains(e.target)) {
+			const dropdown = document.getElementById('notifDropdown');
+			if (dropdown) dropdown.classList.add('hidden');
+		}
+	});
+
+	(function () {
+		const input = document.getElementById('gs-navbar-input');
+		const clearBtn = document.getElementById('gs-clear-btn');
+		const filterToggle = document.getElementById('gs-filter-toggle');
+		const filterDot = document.getElementById('gs-filter-dot');
+
+		let debounceTimer;
+
+		input.addEventListener('input', function () {
+			clearTimeout(debounceTimer);
+			debounceTimer = setTimeout(function () {
+				const query = input.value;
+				clearBtn.classList.toggle('hidden', !query);
+				document.dispatchEvent(new CustomEvent('globalSearch', { detail: { query: query } }));
+			}, 220);
+		});
+
+		clearBtn.addEventListener('click', function () {
+			input.value = '';
+			clearBtn.classList.add('hidden');
+			sessionStorage.removeItem('gs_query');
+			document.dispatchEvent(new CustomEvent('globalSearch', { detail: { query: '' } }));
+			input.focus();
+		});
+
+		filterToggle.addEventListener('click', function () {
+			const panel = document.getElementById('pageFilterPanel');
+			if (!panel) return;
+			const isHidden = panel.classList.toggle('hidden');
+			filterToggle.classList.toggle('text-accent-blue', !isHidden);
+			filterToggle.classList.toggle('bg-accent-blue/10', !isHidden);
+			filterDot.classList.toggle('hidden', isHidden);
+		});
+
+		document.addEventListener('DOMContentLoaded', function () {
+			const hasPanelContent = document.getElementById('pageFilterPanel');
+			filterToggle.classList.toggle('opacity-30', !hasPanelContent);
+			filterToggle.title = hasPanelContent ? 'Filtrele' : 'Bu sayfa için filtre mevcut değil';
+		});
+
+		const inPageSearch = document.getElementById('searchInput');
+		if (inPageSearch) {
+			inPageSearch.addEventListener('input', function () {
+				clearBtn.classList.toggle('hidden', !this.value);
+				if (input.value !== this.value) input.value = this.value;
+			});
+		}
+	})();
+</script>
