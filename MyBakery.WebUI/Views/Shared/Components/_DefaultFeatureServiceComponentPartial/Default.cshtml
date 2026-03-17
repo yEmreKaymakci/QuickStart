@@ -1,0 +1,30 @@
+@using MyBakery.WebUI.Dtos.FeatureServices
+@model List<ResultFeatureServiceDto>
+
+<section id="featured-services" class="featured-services section light-background">
+
+	<div class="container">
+
+		<div class="row gy-4">
+
+			@foreach (var item in Model)
+			{
+				<div class="col-xl-4 col-lg-6" data-aos="fade-up" data-aos-delay="100">
+					<div class="service-item d-flex">
+						@{
+							string iconClass = item.IconUrl != null && item.IconUrl.Contains("bi ") ? item.IconUrl : "bi bi-" + item.IconUrl;
+						}
+						<div class="icon flex-shrink-0"><i class="@iconClass"></i></div>
+						<div>
+							<h4 class="title"><a href="#" class="stretched-link">@item.Title</a></h4>
+							<p class="description">@item.Description</p>
+						</div>
+					</div>
+				</div>
+			}
+
+		</div>
+
+	</div>
+
+</section>

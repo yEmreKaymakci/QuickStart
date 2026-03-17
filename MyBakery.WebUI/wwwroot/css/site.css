@@ -1,0 +1,48 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* Bakery Theme Overrides */
+:root {
+  --background-color: #fffaf0 !important;
+  --default-color: #5c3a21 !important;
+  --heading-color: #4a2e1b !important;
+  --accent-color: #d2691e !important;
+  --surface-color: #ffffff !important;
+  --contrast-color: #ffffff !important;
+  --nav-color: #5c3a21 !important;
+  --nav-hover-color: #d2691e !important;
+}
+
+/* Image Aspect Ratios for responsivness */
+.hero-bg img, 
+#features .tab-content img, 
+.about img, 
+.img-fluid {
+  object-fit: cover;
+  width: 100%;
+}
+
+.hero-bg img {
+  height: 100vh;
+}
+
+#features .tab-content img {
+  max-height: 500px;
+  border-radius: 10px;
+}

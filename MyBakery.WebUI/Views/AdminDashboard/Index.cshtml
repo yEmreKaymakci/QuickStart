@@ -1,0 +1,375 @@
+@using MyBakery.WebUI.Dtos.Notification
+@{
+	ViewData["Title"] = "Dashboard";
+	Layout = "~/Views/_AdminLayout/Index.cshtml";
+	var notifications = ViewBag.RecentNotifications as List<ResultNotificationWithNotificationTypeDto> ?? new();
+	var typeColors = new Dictionary<string, (string bg, string text, string icon)>
+	{
+		{ "Sipariş",     ("bg-blue-500/10",   "text-blue-400",   "mdi-cart-outline") },
+		{ "Mesaj",       ("bg-purple-500/10", "text-purple-400", "mdi-email-outline") },
+		{ "Kampanya",    ("bg-orange-500/10", "text-orange-400", "mdi-tag-outline") },
+		{ "Güncelleme",  ("bg-cyan-500/10",   "text-cyan-400",   "mdi-bell-outline") },
+	};
+}
+
+<div class="space-y-6">
+
+	<div class="flex items-center justify-between">
+		<div>
+			<h1 class="text-2xl font-bold text-white">Fırın Yönetim Paneli</h1>
+			<p class="text-sm text-gray-500 mt-0.5">Baker — Dinamik Fırın Sitesi genel görünümü</p>
+		</div>
+		<div class="flex items-center gap-2 text-xs text-gray-500 bg-dark-bg-card border border-gray-800 px-3 py-1.5 rounded-lg">
+			<i class="mdi mdi-calendar-today text-accent-blue"></i>
+			@DateTime.Now.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("tr-TR"))
+		</div>
+	</div>
+
+	<div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-4">
+
+		<a href="/AdminTestimonial/Index" class="group bg-dark-bg-card p-5 rounded-custom border border-gray-800 hover:border-amber-500/40 shadow-xl transition-all-custom cursor-pointer">
+			<div class="flex justify-between items-start">
+				<div class="p-2.5 bg-amber-500/10 rounded-lg group-hover:bg-amber-500/20 transition-all-custom">
+					<i class="mdi mdi-star-outline text-amber-400 text-xl"></i>
+				</div>
+				<span class="text-green-400 text-xs font-semibold flex items-center gap-0.5">
+					<i class="mdi mdi-trending-up text-xs"></i>+12%
+				</span>
+			</div>
+			<p class="mt-4 text-gray-400 text-xs font-medium">Müşteri Yorumları</p>
+			<p class="text-3xl font-bold mt-1 text-white">@ViewBag.TestimonialCount</p>
+		</a>
+
+		<a href="/AdminService/Index" class="group bg-dark-bg-card p-5 rounded-custom border border-gray-800 hover:border-accent-blue/40 shadow-xl transition-all-custom cursor-pointer">
+			<div class="flex justify-between items-start">
+				<div class="p-2.5 bg-accent-blue/10 rounded-lg group-hover:bg-accent-blue/20 transition-all-custom">
+					<i class="mdi mdi-bread-slice-outline text-accent-blue text-xl"></i>
+				</div>
+				<span class="text-green-400 text-xs font-semibold flex items-center gap-0.5">
+					<i class="mdi mdi-trending-up text-xs"></i>+2%
+				</span>
+			</div>
+			<p class="mt-4 text-gray-400 text-xs font-medium">Ürün & Servis</p>
+			<p class="text-3xl font-bold mt-1 text-white">@ViewBag.ServiceCount</p>
+		</a>
+
+		<a href="/AdminSubscribe/Index" class="group bg-dark-bg-card p-5 rounded-custom border border-gray-800 hover:border-green-500/40 shadow-xl transition-all-custom cursor-pointer">
+			<div class="flex justify-between items-start">
+				<div class="p-2.5 bg-green-500/10 rounded-lg group-hover:bg-green-500/20 transition-all-custom">
+					<i class="mdi mdi-email-newsletter text-green-400 text-xl"></i>
+				</div>
+				<span class="text-green-400 text-xs font-semibold flex items-center gap-0.5">
+					<i class="mdi mdi-trending-up text-xs"></i>+8%
+				</span>
+			</div>
+			<p class="mt-4 text-gray-400 text-xs font-medium">Aboneler</p>
+			<p class="text-3xl font-bold mt-1 text-white">@ViewBag.SubscribeCount</p>
+		</a>
+
+		<a href="/AdminMessage/Index" class="group bg-dark-bg-card p-5 rounded-custom border border-gray-800 hover:border-accent-purple/40 shadow-xl transition-all-custom cursor-pointer">
+			<div class="flex justify-between items-start">
+				<div class="p-2.5 bg-accent-purple/10 rounded-lg group-hover:bg-accent-purple/20 transition-all-custom">
+					<i class="mdi mdi-message-text-outline text-accent-purple text-xl"></i>
+				</div>
+				<span class="text-yellow-400 text-xs font-semibold flex items-center gap-0.5">
+					<i class="mdi mdi-minus text-xs"></i>+0%
+				</span>
+			</div>
+			<p class="mt-4 text-gray-400 text-xs font-medium">Mesajlar</p>
+			<p class="text-3xl font-bold mt-1 text-white">@ViewBag.MessageCount</p>
+		</a>
+
+		<a href="/AdminFAQ/Index" class="group bg-dark-bg-card p-5 rounded-custom border border-gray-800 hover:border-cyan-500/40 shadow-xl transition-all-custom cursor-pointer">
+			<div class="flex justify-between items-start">
+				<div class="p-2.5 bg-cyan-500/10 rounded-lg group-hover:bg-cyan-500/20 transition-all-custom">
+					<i class="mdi mdi-frequently-asked-questions text-cyan-400 text-xl"></i>
+				</div>
+				<span class="text-green-400 text-xs font-semibold flex items-center gap-0.5">
+					<i class="mdi mdi-trending-up text-xs"></i>+1%
+				</span>
+			</div>
+			<p class="mt-4 text-gray-400 text-xs font-medium">SSS</p>
+			<p class="text-3xl font-bold mt-1 text-white">@ViewBag.FAQCount</p>
+		</a>
+
+		<a href="/AdminNotification/Index" class="group bg-dark-bg-card p-5 rounded-custom border border-gray-800 hover:border-red-500/40 shadow-xl transition-all-custom cursor-pointer">
+			<div class="flex justify-between items-start">
+				<div class="p-2.5 bg-red-500/10 rounded-lg group-hover:bg-red-500/20 transition-all-custom">
+					<i class="mdi mdi-bell-ring-outline text-red-400 text-xl"></i>
+				</div>
+				@if ((int)(ViewBag.UnreadCount ?? 0) > 0)
+				{
+					<span class="bg-red-500/20 text-red-400 text-xs font-bold px-1.5 py-0.5 rounded-full">@ViewBag.UnreadCount yeni</span>
+				}
+				else
+				{
+					<span class="text-gray-500 text-xs">—</span>
+				}
+			</div>
+			<p class="mt-4 text-gray-400 text-xs font-medium">Bildirimler</p>
+			<p class="text-3xl font-bold mt-1 text-white">@(notifications.Count)</p>
+		</a>
+
+	</div>
+
+	<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+
+		<div class="xl:col-span-2 bg-dark-bg-card p-6 rounded-custom border border-gray-800 shadow-xl">
+			<div class="flex items-center justify-between mb-5">
+				<div>
+					<h2 class="text-lg font-bold text-white">Haftalık Sipariş & Ziyaretçi Analizi</h2>
+					<p class="text-xs text-gray-500 mt-0.5">Son 7 günlük fırın aktivitesi</p>
+				</div>
+				<div class="flex items-center gap-3 text-xs text-gray-500">
+					<span class="flex items-center gap-1.5"><span class="inline-block w-3 h-0.5 bg-accent-blue rounded"></span>Ziyaretçi</span>
+					<span class="flex items-center gap-1.5"><span class="inline-block w-3 h-0.5 bg-amber-400 rounded"></span>Sipariş</span>
+				</div>
+			</div>
+			<div class="h-[280px]">
+				<canvas id="growthChart"></canvas>
+			</div>
+		</div>
+
+		<div class="bg-dark-bg-card p-6 rounded-custom border border-gray-800 shadow-xl flex flex-col gap-4">
+			<div>
+				<h2 class="text-lg font-bold text-white">Ürün Kategori Dağılımı</h2>
+				<p class="text-xs text-gray-500 mt-0.5">Servis türü yüzdesi</p>
+			</div>
+			<div class="flex-1 flex items-center justify-center">
+				<div class="h-[180px] w-[180px]">
+					<canvas id="categoryChart"></canvas>
+				</div>
+			</div>
+			<ul class="space-y-2 text-xs">
+				<li class="flex items-center justify-between text-gray-400">
+					<span class="flex items-center gap-2"><span class="inline-block w-2.5 h-2.5 rounded-sm bg-amber-400"></span>Ekmek & Unlu Mamuller</span>
+					<span class="font-semibold text-white">42%</span>
+				</li>
+				<li class="flex items-center justify-between text-gray-400">
+					<span class="flex items-center gap-2"><span class="inline-block w-2.5 h-2.5 rounded-sm bg-accent-blue"></span>Pastalar & Tatlılar</span>
+					<span class="font-semibold text-white">31%</span>
+				</li>
+				<li class="flex items-center justify-between text-gray-400">
+					<span class="flex items-center gap-2"><span class="inline-block w-2.5 h-2.5 rounded-sm bg-accent-purple"></span>Özel Siparişler</span>
+					<span class="font-semibold text-white">17%</span>
+				</li>
+				<li class="flex items-center justify-between text-gray-400">
+					<span class="flex items-center gap-2"><span class="inline-block w-2.5 h-2.5 rounded-sm bg-green-400"></span>Catering</span>
+					<span class="font-semibold text-white">10%</span>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+
+	<div class="bg-dark-bg-card rounded-custom border border-gray-800 shadow-xl overflow-hidden">
+		<div class="p-5 border-b border-gray-800 flex justify-between items-center flex-wrap gap-3">
+			<div>
+				<h2 class="text-lg font-bold text-white">Son Gelen Bildirimler</h2>
+				<p class="text-xs text-gray-500 mt-0.5">İletişim formu aracılığıyla gelen mesajlar</p>
+			</div>
+			<div class="flex items-center gap-2">
+				@if ((int)(ViewBag.UnreadCount ?? 0) > 0)
+				{
+					<span class="text-xs bg-red-500/10 text-red-400 font-bold px-2.5 py-1 rounded-full">
+						<i class="mdi mdi-circle text-[8px]"></i> @ViewBag.UnreadCount okunmamış
+					</span>
+				}
+				<a href="/AdminNotification/Index" class="text-xs text-accent-blue hover:text-blue-400 font-medium transition-colors inline-flex items-center gap-1">
+					Tümünü Gör <i class="mdi mdi-arrow-right text-xs"></i>
+				</a>
+			</div>
+		</div>
+
+		@if (notifications.Any())
+		{
+			<div class="overflow-x-auto">
+				<table class="w-full text-left whitespace-nowrap">
+					<thead>
+						<tr class="text-gray-500 text-xs font-bold uppercase tracking-wider bg-black/20">
+							<th class="px-5 py-3.5">Gönderen</th>
+							<th class="px-5 py-3.5">Başlık</th>
+							<th class="px-5 py-3.5">Konu Türü</th>
+							<th class="px-5 py-3.5">Durum</th>
+							<th class="px-5 py-3.5 text-right">İşlem</th>
+						</tr>
+					</thead>
+					<tbody class="divide-y divide-gray-800/60">
+						@foreach (var item in notifications)
+						{
+							var (tcBg, tcText, tcIcon) = typeColors.ContainsKey(item.NotificationTypeName ?? "")
+								? typeColors[item.NotificationTypeName]
+								: ("bg-gray-700/30", "text-gray-400", "mdi-bell-outline");
+
+							<tr class="hover:bg-white/5 transition-all-custom @(item.IsRead ? "opacity-60" : "")">
+								<td class="px-5 py-3.5">
+									<div class="flex items-center gap-3">
+										<div class="w-8 h-8 rounded-full bg-gradient-to-br from-accent-blue/30 to-accent-purple/30 flex items-center justify-center text-xs font-bold text-white shrink-0">
+											@(string.IsNullOrEmpty(item.Email) ? "?" : item.Email.Substring(0, 1).ToUpper())
+										</div>
+										<div class="min-w-0">
+											<p class="text-sm font-medium text-white truncate max-w-[130px]">@(item.Email ?? "—")</p>
+										</div>
+									</div>
+								</td>
+								<td class="px-5 py-3.5 text-sm text-gray-300 max-w-[180px]">
+									<div class="truncate">@item.Title</div>
+								</td>
+								<td class="px-5 py-3.5">
+									<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium @tcBg @tcText">
+										<i class="mdi @tcIcon text-[10px]"></i>
+										@(item.NotificationTypeName ?? "Genel")
+									</span>
+								</td>
+								<td class="px-5 py-3.5">
+									@if (item.IsRead)
+									{
+										<span class="inline-flex items-center gap-1 bg-green-500/10 text-green-400 px-2 py-0.5 rounded-full text-xs font-medium">
+											<i class="mdi mdi-check-circle text-[10px]"></i> Okundu
+										</span>
+									}
+									else
+									{
+										<span class="inline-flex items-center gap-1 bg-yellow-500/10 text-yellow-400 px-2 py-0.5 rounded-full text-xs font-medium">
+											<i class="mdi mdi-clock-outline text-[10px]"></i> Okunmadı
+										</span>
+									}
+								</td>
+								<td class="px-5 py-3.5 text-right">
+									<div class="flex items-center justify-end gap-1.5">
+										@if (!item.IsRead)
+										{
+											<a href="/Notification/MarkeAsRead/@item.NotificationId" title="Okundu İşaretle"
+											   class="inline-flex items-center justify-center w-7 h-7 bg-green-500/10 text-green-400 hover:bg-green-500/20 rounded-md text-xs transition-all-custom">
+												<i class="mdi mdi-check"></i>
+											</a>
+										}
+										<a href="/AdminNotification/UpdateNotification/@item.NotificationId" title="Düzenle"
+										   class="inline-flex items-center justify-center w-7 h-7 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 rounded-md text-xs transition-all-custom">
+											<i class="mdi mdi-eye"></i>
+										</a>
+										<a href="/AdminNotification/DeleteNotification/@item.NotificationId" title="Sil"
+										   class="inline-flex items-center justify-center w-7 h-7 bg-red-500/10 text-red-400 hover:bg-red-500/20 rounded-md text-xs transition-all-custom"
+										   onclick="return confirm('Bu bildirimi silmek istediğinizden emin misiniz?')">
+											<i class="mdi mdi-delete"></i>
+										</a>
+									</div>
+								</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+		}
+		else
+		{
+			<div class="p-12 text-center text-gray-500">
+				<i class="mdi mdi-bell-off-outline text-5xl block mb-3 opacity-30"></i>
+				<p class="text-sm font-medium">Henüz bildirim bulunmuyor.</p>
+				<p class="text-xs mt-1 text-gray-600">İletişim formu üzerinden mesaj geldiğinde burada görünecek.</p>
+			</div>
+		}
+	</div>
+
+</div>
+
+@section Scripts {
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+
+			const ctxLine = document.getElementById('growthChart').getContext('2d');
+			const blueGrad = ctxLine.createLinearGradient(0, 0, 0, 280);
+			blueGrad.addColorStop(0, 'rgba(59,130,246,0.35)');
+			blueGrad.addColorStop(1, 'rgba(59,130,246,0)');
+			const amberGrad = ctxLine.createLinearGradient(0, 0, 0, 280);
+			amberGrad.addColorStop(0, 'rgba(251,191,36,0.35)');
+			amberGrad.addColorStop(1, 'rgba(251,191,36,0)');
+
+			new Chart(ctxLine, {
+				type: 'line',
+				data: {
+					labels: ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'],
+					datasets: [
+						{
+							label: 'Ziyaretçi',
+							data: [48, 72, 61, 89, 77, 134, 110],
+							borderColor: '#3b82f6',
+							backgroundColor: blueGrad,
+							fill: true,
+							tension: 0.4,
+							borderWidth: 2.5,
+							pointRadius: 3,
+							pointBackgroundColor: '#3b82f6',
+						},
+						{
+							label: 'Sipariş',
+							data: [12, 28, 19, 34, 41, 58, 37],
+							borderColor: '#fbbf24',
+							backgroundColor: amberGrad,
+							fill: true,
+							tension: 0.4,
+							borderWidth: 2.5,
+							pointRadius: 3,
+							pointBackgroundColor: '#fbbf24',
+						}
+					]
+				},
+				options: {
+					responsive: true,
+					maintainAspectRatio: false,
+					plugins: {
+						legend: { display: false },
+						tooltip: {
+							backgroundColor: '#1e1e1e',
+							borderColor: '#374151',
+							borderWidth: 1,
+							titleColor: '#e5e7eb',
+							bodyColor: '#9ca3af',
+							padding: 10,
+						}
+					},
+					scales: {
+						y: {
+							grid: { color: 'rgba(75,85,99,0.15)', drawBorder: false },
+							ticks: { color: '#6b7280', font: { size: 11 } }
+						},
+						x: {
+							grid: { display: false },
+							ticks: { color: '#6b7280', font: { size: 11 } }
+						}
+					}
+				}
+			});
+
+			const ctxDough = document.getElementById('categoryChart').getContext('2d');
+			new Chart(ctxDough, {
+				type: 'doughnut',
+				data: {
+					labels: ['Ekmek & Unlu', 'Pastalar', 'Özel Sipariş', 'Catering'],
+					datasets: [{
+						data: [42, 31, 17, 10],
+						backgroundColor: ['#fbbf24', '#3b82f6', '#a855f7', '#4ade80'],
+						borderWidth: 0,
+						hoverOffset: 6,
+					}]
+				},
+				options: {
+					responsive: true,
+					maintainAspectRatio: false,
+					cutout: '68%',
+					plugins: {
+						legend: { display: false },
+						tooltip: {
+							backgroundColor: '#1e1e1e',
+							borderColor: '#374151',
+							borderWidth: 1,
+							titleColor: '#e5e7eb',
+							bodyColor: '#9ca3af',
+							padding: 10,
+						}
+					}
+				}
+			});
+		});
+	</script>
+}

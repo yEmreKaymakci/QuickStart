@@ -1,0 +1,34 @@
+﻿@using MyBakery.WebUI.Dtos.FAQs
+@model List<ResultFAQsDto>
+<section id="faq" class="faq section">
+
+	<div class="container section-title" data-aos="fade-up">
+		<h2>Sıkça Sorulan Sorular</h2>
+	</div>
+
+	<div class="container">
+
+		<div class="row justify-content-center">
+
+			<div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+
+				<div class="faq-container">
+					@foreach (var item in Model)
+					{
+						<div class="faq-item faq-active">
+							<h3>@item.Title</h3>
+							<div class="faq-content">
+								<p>@item.Description</p>
+							</div>
+							<i class="faq-toggle bi bi-chevron-right"></i>
+						</div>
+					}
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</section>

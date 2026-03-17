@@ -1,0 +1,14 @@
+using System.ComponentModel.DataAnnotations;
+
+namespace MyBakery.WebUI.Dtos.NotificationTypes
+{
+    public class UpdateNotificationTypeDto
+    {
+        [Required]
+        public int NotificationTypeId { get; set; }
+
+        [Required(ErrorMessage = "Bildirim türü adı zorunludur.")]
+        [MaxLength(100, ErrorMessage = "Tür adı en fazla 100 karakter olabilir.")]
+        public string Name { get; set; }
+    }
+}

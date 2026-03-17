@@ -1,0 +1,19 @@
+﻿@using MyBakery.WebUI.Dtos.Clients
+@model List<ResultClientsDto>
+
+<section id="clients" class="clients section">
+
+	<div class="container" data-aos="fade-up">
+
+		<div class="row gy-4">
+			@foreach (var item in Model)
+			{
+				<div class="col-xl-2 col-md-3 col-6 client-logo">
+					<img src="@item.ImageUrl" class="img-fluid" alt="">
+				</div>
+			}
+		</div>
+
+	</div>
+
+</section>

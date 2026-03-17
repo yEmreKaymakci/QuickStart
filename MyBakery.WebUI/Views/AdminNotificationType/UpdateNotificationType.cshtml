@@ -1,0 +1,42 @@
+@using MyBakery.WebUI.Dtos.NotificationTypes
+@model UpdateNotificationTypeDto
+
+@{
+	ViewData["Title"] = "UpdateNotificationType";
+	Layout = "~/Views/_AdminLayout/Index.cshtml";
+}
+
+<div class="max-w-4xl mx-auto mt-2">
+	<div class="bg-dark-bg-card rounded-custom border border-gray-800 shadow-xl overflow-hidden">
+
+		<div class="p-6 border-b border-gray-800 flex justify-between items-center flex-wrap gap-4">
+			<div>
+				<h2 class="text-xl font-bold text-white">Bildirim Türü Güncelle</h2>
+				<p class="text-sm text-gray-400 mt-1">Mevcut bildirim türünü düzenleyin.</p>
+			</div>
+			<a href="/AdminNotificationType/Index" class="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-gray-300 px-4 py-2 rounded-custom transition-all-custom text-sm font-medium border border-gray-700">
+				<i class="mdi mdi-arrow-left"></i> Listeye Dön
+			</a>
+		</div>
+
+		<div class="p-6">
+			<form method="post" class="space-y-6">
+
+				<input type="hidden" asp-for="NotificationTypeId" />
+
+				<div>
+					<label asp-for="Name" class="block text-sm font-medium text-gray-400 mb-2">Ad</label>
+					<input type="text" asp-for="Name" class="w-full bg-dark-bg-deep border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-gray-300 focus:ring-2 focus:ring-accent-blue focus:border-accent-blue transition-all-custom outline-none" required />
+				</div>
+
+				<div class="pt-4 border-t border-gray-800 flex justify-end">
+					<button type="submit" class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white px-6 py-2.5 rounded-lg transition-all-custom text-sm font-medium shadow-lg shadow-green-500/30">
+						<i class="mdi mdi-check-circle-outline"></i> Değişiklikleri Kaydet
+					</button>
+				</div>
+
+			</form>
+		</div>
+
+	</div>
+</div>
