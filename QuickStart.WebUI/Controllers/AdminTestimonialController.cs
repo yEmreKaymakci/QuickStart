@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -5,6 +6,7 @@ using QuickStart.WebUI.Dtos.Testimonials;
 
 namespace QuickStart.WebUI.Controllers
 {
+    [Authorize]
     public class AdminTestimonialController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

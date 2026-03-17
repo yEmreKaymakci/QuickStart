@@ -7,6 +7,14 @@
             Breeze Admin
         </span>
     </div>
+    <div class="px-4 pb-3">
+        <a href="/Default/Index"
+           class="flex items-center gap-3 px-4 py-2.5 rounded-custom text-amber-400 bg-gradient-to-r from-amber-500/15 to-orange-500/10 border border-amber-500/20 hover:from-amber-500/25 hover:to-orange-500/20 transition-all-custom font-medium text-sm">
+            <i class="mdi mdi-home-outline text-lg"></i>
+            <span>Siteye Git</span>
+            <i class="mdi mdi-arrow-right ml-auto text-xs opacity-60"></i>
+        </a>
+    </div>
     <nav class="flex-1 px-4 space-y-1 overflow-y-auto mt-2 pb-4">
 
         <!-- Genel -->
@@ -75,7 +83,9 @@
 
     </nav>
     <div class="p-4 mt-auto border-t border-gray-800 space-y-1">
-        <a class="flex items-center gap-3 px-4 py-3 rounded-custom text-red-400 hover:bg-red-500/10 transition-all-custom" href="/Default/Index">
+        <a class="flex items-center gap-3 px-4 py-3 rounded-custom text-red-400 hover:bg-red-500/10 transition-all-custom"
+           href="/Account/Logout"
+           onclick="return confirm('Çıkış yapmak istediğinizden emin misiniz?')">
             <i class="mdi mdi-logout"></i>
             <span>Çıkış Yap</span>
         </a>

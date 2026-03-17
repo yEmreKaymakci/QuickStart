@@ -1,10 +1,12 @@
-ï»¿using System.Text;
+using Microsoft.AspNetCore.Authorization;
+using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using QuickStart.WebUI.Dtos.Abouts;
 
 namespace QuickStart.WebUI.Controllers
 {
+    [Authorize]
     public class AdminAboutController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
@@ -38,7 +40,7 @@ namespace QuickStart.WebUI.Controllers
         {
             var client = _httpClientFactory.CreateClient();
 
-            var jsonData = JsonConvert.SerializeObject(model); //gÃ¶ndereceÄŸim veri stringten - json Ã§evirme
+            var jsonData = JsonConvert.SerializeObject(model); //göndereceðim veri stringten - json çevirme
 
             var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 

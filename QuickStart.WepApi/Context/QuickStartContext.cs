@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using QuickStart.WepApi.Entity;
 
 namespace QuickStart.WepApi.Context
@@ -36,6 +36,9 @@ namespace QuickStart.WepApi.Context
         public DbSet<Slider> Sliders { get; set; }
 
         public DbSet<Subscribe> Subscribes { get; set; }
+
+        public DbSet<AdminUser> AdminUsers { get; set; }
+
 
     }
 }

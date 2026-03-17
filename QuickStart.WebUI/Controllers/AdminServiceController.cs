@@ -1,15 +1,17 @@
-ï»¿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using QuickStart.WebUI.Dtos.Services;
 using System.Text;
 
 namespace QuickStart.WebUI.Controllers
 {
+    [Authorize]
     public class AdminServiceController : Controller
     {
-        //Api - FARKLI PROGRAMLARIN BÄ°RBÄ°RÄ°YLE KONUÅžMASINI SAÄžLAR
-        //HTTP - Ä°nternetteki cihazlarÄ±n birbiriyle konuÅŸmasÄ±nÄ± saÄŸlayan bir protokol
-        //HTTCLÄ°ENT - Apiye http isteklerini gÃ¶ndermemiz iÃ§in kullanÄ±yoruz.
+        //Api - FARKLI PROGRAMLARIN BÝRBÝRÝYLE KONUÞMASINI SAÐLAR
+        //HTTP - Ýnternetteki cihazlarýn birbiriyle konuþmasýný saðlayan bir protokol
+        //HTTCLÝENT - Apiye http isteklerini göndermemiz için kullanýyoruz.
 
 
         private readonly IHttpClientFactory _httpClientFactory;
@@ -43,7 +45,7 @@ namespace QuickStart.WebUI.Controllers
         {
             var client = _httpClientFactory.CreateClient();
 
-            var jsonData=JsonConvert.SerializeObject(model); //gÃ¶ndereceÄŸim veri stringten - json Ã§evirme
+            var jsonData=JsonConvert.SerializeObject(model); //göndereceðim veri stringten - json çevirme
 
             var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 

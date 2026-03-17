@@ -1,11 +1,15 @@
-﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using QuickStart.WebUI.Dtos.Notification;
 
 namespace QuickStart.WebUI.Controllers
 {
+    [Authorize]
     public class AdminDashboardController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        private const string ApiBase = "https://localhost:7051/api";
 
         public AdminDashboardController(IHttpClientFactory httpClientFactory)
         {
@@ -16,17 +20,46 @@ namespace QuickStart.WebUI.Controllers
         {
             var client = _httpClientFactory.CreateClient();
 
-            var responseMessage = await client.GetAsync("https://localhost:7051/api/Testimonial/TestimonialCount");
-            var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            ViewBag.TestimonialCount = jsonData;
+            var tasks = new[]
+            {
+                FetchInt(client, $"{ApiBase}/Testimonial/TestimonialCount"),
+                FetchInt(client, $"{ApiBase}/Service/ServiceCount"),
+                FetchInt(client, $"{ApiBase}/Message/MessageCount"),
+                FetchInt(client, $"{ApiBase}/Subscribe/SubscribeCount"),
+                FetchInt(client, $"{ApiBase}/FAQ/FAQCount"),
+            };
 
-            var responseMessage1 = await client.GetAsync("https://localhost:7051/api/Service/ServiceCount");
-            var jsonData1 = await responseMessage1.Content.ReadAsStringAsync();
-            ViewBag.ServiceCount = jsonData1;
+            await Task.WhenAll(tasks);
 
+            ViewBag.TestimonialCount = tasks[0].Result;
+            ViewBag.ServiceCount = tasks[1].Result;
+            ViewBag.MessageCount = tasks[2].Result;
+            ViewBag.SubscribeCount = tasks[3].Result;
+            ViewBag.FAQCount = tasks[4].Result;
 
+            var notifResponse = await client.GetAsync($"{ApiBase}/Notification/GetNotificationListWithNotificationType");
+            var notifJson = await notifResponse.Content.ReadAsStringAsync();
+            var notifications = JsonConvert.DeserializeObject<List<ResultNotificationWithNotificationTypeDto>>(notifJson)
+                                ?? new List<ResultNotificationWithNotificationTypeDto>();
+
+            ViewBag.UnreadCount = notifications.Count(x => !x.IsRead);
+            ViewBag.RecentNotifications = notifications.Take(8).ToList();
 
             return View();
+        }
+
+        private static async Task<int> FetchInt(HttpClient client, string url)
+        {
+            try
+            {
+                var res = await client.GetAsync(url);
+                var body = await res.Content.ReadAsStringAsync();
+                return int.TryParse(body, out var n) ? n : 0;
+            }
+            catch
+            {
+                return 0;
+            }
         }
     }
 }
