@@ -94,7 +94,7 @@ Projeyi yerel ortamınızda (localhost) çalıştırmak için aşağıdaki adım
   
   <p><strong>Ana Sayfa Genel Bakış</strong></p>
   
-  ![SliderUI](https://github.com/user-attachments/assets/00937435-72b6-40a2-a727-89634fb14c1b)
+  ![SliderUI](https://github.com/user-attachments/assets/186db116-9ecb-4889-ae10-513d7a30a3fa)
   <br><br>
   
   <p><strong>Hakkımızda</strong></p>
