@@ -6,12 +6,6 @@
   <br>
 </div>
 
-<p align="center">
-  <a href="#proje-özellikleri">Proje Özellikleri</a> •
-  <a href="#kullanılan-teknolojiler">Kullanılan Teknolojiler</a> •
-  <a href="#kurulum">Kurulum</a> •
-  <a href="#proje-görselleri">Proje Görselleri</a>
-</p>
 
 ## 📖 Proje Hakkında
 
