@@ -86,8 +86,6 @@ Projeyi yerel ortamınızda (localhost) çalıştırmak için aşağıdaki adım
 
 ## 📸 Proje Görselleri
 
-*(Bu kısımdaki görselleri proje içinden aldığınız ekran görüntüleri ile repo'nuzdaki `images` klasörünüze yükleyerek güncelleyebilirsiniz)*
-
 ### 🏠 Ana Sayfa (WebUI)
 
 <div align="center">
